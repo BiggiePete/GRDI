@@ -1,4 +1,6 @@
 export default {
+  ssr: false,
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'GRDI',
@@ -34,8 +36,9 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [{
-    src: '@/plugins/baklava.client.js',
-    mode: 'client'
+    src: '~/plugins/baklava.js',
+    mode: 'client',
+    ssr: false,
   }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
