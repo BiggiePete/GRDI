@@ -15,6 +15,7 @@ import { OptionPlugin } from "@baklavajs/plugin-options-vue"
 import { MathNode } from "@/components/Nodes/MathNode.ts"
 import { DisplayNode } from "@/components/Nodes/DisplayNode.ts"
 import { CameraNode } from "@/components/Nodes/CameraNode.ts"
+import { CameraInfoMessage } from "@/components/ROSFormats/Messages/CameraInfoMessage.ts"
 import * as Save from "@/static/Scripts/SaveJson.ts"
 
 export default {
@@ -30,7 +31,7 @@ export default {
         this.editor.use(new OptionPlugin())
         this.editor.use(this.intfTypePlugin)
         this.viewPlugin.enableMinimap = false;
-        this.intfTypePlugin.addType("number", "#00FF00");
+        this.intfTypePlugin.addType("number",CameraInfoMessage.__color );
         // create new node
         const SelectTestNode = new NodeBuilder("SelectTestNode")
             .addOption("Simple", "SelectOption", "A", undefined, { items: ["A", "B", "C"] })

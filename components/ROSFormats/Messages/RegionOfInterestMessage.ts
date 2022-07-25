@@ -1,6 +1,6 @@
-import ColorSheet from "../ColorSheet";
+import { colors } from "../ColorSheet";
 export default class RegionOfInterestMessage {
-    __color = ColorSheet.colors[2];
+    __color = colors[2];
 
     x_offset;
     y_offset;

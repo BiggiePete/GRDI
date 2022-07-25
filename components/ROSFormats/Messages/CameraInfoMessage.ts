@@ -1,9 +1,9 @@
 import Header from "../Header";
 import RegionOfInterestMessage from "./RegionOfInterestMessage";
-import ColorSheet from "../ColorSheet";
+import {colors} from "../ColorSheet";
 
 export default class CameraInfoMessage {
-    __color = ColorSheet.colors[3];
+    __color = colors[3];
 
 
     header;
@@ -31,5 +31,6 @@ export default class CameraInfoMessage {
         this.binning_x = binning_x;
         this.binning_y = binning_y;
         this.roi = roi;
+        this.__color = colors[3];
     }
 }

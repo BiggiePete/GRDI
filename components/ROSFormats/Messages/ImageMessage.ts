@@ -1,7 +1,7 @@
 import Header from "../Header"
-import ColorSheet from "../ColorSheet";
+import { colors } from "../ColorSheet";
 export default class ImageMessage {
-    __color = ColorSheet.colors[1];
+    __color = colors[1];
 
     header;
     height;

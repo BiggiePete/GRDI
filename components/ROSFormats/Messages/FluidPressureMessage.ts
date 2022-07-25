@@ -1,8 +1,8 @@
-import ColorSheet from "../ColorSheet";
+import { colors } from "../ColorSheet";
 import Header from "../Header";
 
 export default class FluidPressureMessage {
-    __color = ColorSheet.colors[6];
+    __color = colors[6];
 
     header;
     fluid_pressure;

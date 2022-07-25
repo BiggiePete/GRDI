@@ -1,8 +1,8 @@
-import ColorSheet from "../ColorSheet";
+import { colors } from "../ColorSheet";
 import Header from "../Header";
 
 export default class CompressedImageMessage {
-    __color = ColorSheet.colors[5];
+    __color = colors[5];
 
 
     header;

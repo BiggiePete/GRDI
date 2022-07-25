@@ -1,10 +1,10 @@
-import ColorSheet from "../ColorSheet";
+import { colors } from "../ColorSheet";
 import Header from "../Header";
 import Quaternion from "../Quaternion";
 import Vector3 from "../Vector3";
 
 export default class ImuMessage {
-    __color = ColorSheet.colors[7];
+    __color = colors[7];
 
     header;
     orientation;

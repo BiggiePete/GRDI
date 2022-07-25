@@ -1,4 +1,8 @@
+import { colors } from "../ColorSheet";
+
 export default class JoyMessage {
+    __color = colors[8];
+
     header;
     axes;
     buttons;

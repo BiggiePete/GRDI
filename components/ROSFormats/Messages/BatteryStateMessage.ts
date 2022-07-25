@@ -1,7 +1,7 @@
 import Header from "../Header";
-import ColorSheet from "../ColorSheet";
+import { colors } from "../ColorSheet";
 export default class BatteryStateMessage {
-    __color = ColorSheet.colors[0];
+    __color = colors[0];
 
     POWER_SUPPLY_STATUS_UNKNOWN = 0
     POWER_SUPPLY_STATUS_CHARGING = 1

@@ -3,7 +3,6 @@ import { Node } from "@baklavajs/core";
 export class CameraNode extends Node {
     type = "CameraNode";
     name = "DeviceName";
-
     constructor() {
         super();
         this.addOption("Camera", "SelectOption", "Select Camera Device", undefined, {

@@ -1,5 +1,4 @@
-export default {
-    colors: ["#FFFFFF",
+export const colors = ["#FFFFFF",
         "#0000FF",
         "#FF0000",
         "#00FF00",
@@ -30,5 +29,4 @@ export default {
         "#00479E",
         "#DC5E93",
         "#93D4FF",
-        "#004CFF"]
-}
+        "#004CFF"];

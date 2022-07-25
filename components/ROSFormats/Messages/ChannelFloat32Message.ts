@@ -1,6 +1,6 @@
-import ColorSheet from "../ColorSheet";
+import { colors } from "../ColorSheet";
 export default class ChannelFloat32Message {
-    __color = ColorSheet.colors[4];
+    __color = colors[4];
 
 
     name;
