@@ -1,5 +1,7 @@
 <template>
     <div style="width:100vw;height:100vh">
+        <button @click="SaveProject">Save</button>
+        <button @click="LoadProject">Load</button>
         <baklava-editor :plugin="viewPlugin"></baklava-editor>
     </div>
 </template>
@@ -10,9 +12,10 @@ import { ViewPlugin } from "@baklavajs/plugin-renderer-vue"
 import { Engine } from "@baklavajs/plugin-engine"
 import { InterfaceTypePlugin } from "@baklavajs/plugin-interface-types"
 import { OptionPlugin } from "@baklavajs/plugin-options-vue"
-import { MathNode } from "@/components/MathNode.ts"
-import { DisplayNode } from "@/components/DisplayNode.ts"
-import { CameraNode } from "@/components/CameraNode.ts"
+import { MathNode } from "@/components/Nodes/MathNode.ts"
+import { DisplayNode } from "@/components/Nodes/DisplayNode.ts"
+import { CameraNode } from "@/components/Nodes/CameraNode.ts"
+import * as Save from "@/static/Scripts/SaveJson.ts"
 
 export default {
     data: () => ({
@@ -26,8 +29,8 @@ export default {
         this.editor.use(this.engine)
         this.editor.use(new OptionPlugin())
         this.editor.use(this.intfTypePlugin)
-        this.intfTypePlugin.addType("number", "#00FF00");
         this.viewPlugin.enableMinimap = false;
+        this.intfTypePlugin.addType("number", "#00FF00");
         // create new node
         const SelectTestNode = new NodeBuilder("SelectTestNode")
             .addOption("Simple", "SelectOption", "A", undefined, { items: ["A", "B", "C"] })
@@ -51,9 +54,29 @@ export default {
         this.editor.registerNodeType("DisplayNode", DisplayNode)
         this.editor.registerNodeType("CameraNode", CameraNode)
 
+
+
+
     },
     methods: {
+        SaveProject() {
+            let data = this.editor.save()
+            Save.SaveJSON("Project.grdi", JSON.stringify(data));
 
+        },
+        LoadProject() {
+            let input = document.createElement('input');
+            input.type = 'file';
+            input.setAttribute("multiple", false);
+            input.setAttribute("accept", ".GRDI")
+            input.onchange = _this => {
+                const file = Array.from(input.files);
+                input.files[0].text().then((e) => {
+                    this.editor.load(JSON.parse(e));
+                })
+            };
+            input.click();
+        }
     }
 }
 </script>

@@ -1,5 +1,8 @@
-import Header from "./Header"
+import Header from "../Header"
+import ColorSheet from "../ColorSheet";
 export default class ImageMessage {
+    __color = ColorSheet.colors[1];
+
     header;
     height;
     width;
@@ -15,5 +18,6 @@ export default class ImageMessage {
         this.is_bigendian = is_bigendian;
         this.step = step;
         this.data = data;
+        
     }
 }

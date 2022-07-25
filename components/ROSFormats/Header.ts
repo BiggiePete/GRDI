@@ -7,5 +7,6 @@ export default class Header {
         this.seq = seq;
         this.stamp = stamp;
         this.frame_id = frame_id;
+        
     }
 }

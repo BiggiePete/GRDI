@@ -1,8 +1,7 @@
 import { Node } from "@baklavajs/core";
 
-
 export class DisplayNode extends Node {
-    type = "Display";
+    type = "DisplayNode";
     name = "Value";
 
     constructor() {

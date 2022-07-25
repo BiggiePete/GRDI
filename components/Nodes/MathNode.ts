@@ -8,7 +8,7 @@ export class MathNode extends Node {
         this.addInputInterface("Number 1", "NumberOption", 1);
         this.addInputInterface("Number 2", "NumberOption", 10);
         this.addOption("Operation", "SelectOption", "Add", undefined, {
-            items: ["Add", "Subtract"]
+            items: ["Add", "Subtract", "Multiply"]
         });
         this.addOutputInterface("Result");
     }
@@ -22,6 +22,8 @@ export class MathNode extends Node {
             result = n1 + n2;
         } else if (operation === "Subtract") {
             result = n1 - n2;
+        } else if (operation === "Multiply") {
+            result = n1 * n2;
         }
         this.getInterface("Result").value = result;
     }
