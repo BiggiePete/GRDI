@@ -4,7 +4,8 @@ import Quaternion from "../Quaternion";
 import Vector3 from "../Vector3";
 
 export default class ImuMessage {
-    __color = colors[7];
+    static __color = colors[7];
+    static type = "ImuMessage"
 
     header;
     orientation;

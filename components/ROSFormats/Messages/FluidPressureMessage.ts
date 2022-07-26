@@ -2,8 +2,9 @@ import { colors } from "../ColorSheet";
 import Header from "../Header";
 
 export default class FluidPressureMessage {
-    __color = colors[6];
-
+    static __color = colors[6];
+    static type = "FluidPressureMessage"
+    
     header;
     fluid_pressure;
     variance;

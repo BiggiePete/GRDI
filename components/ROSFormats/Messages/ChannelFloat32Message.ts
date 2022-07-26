@@ -1,7 +1,7 @@
 import { colors } from "../ColorSheet";
 export default class ChannelFloat32Message {
-    __color = colors[4];
-
+    static __color = colors[4];
+    static type = "ChannelFloat32Message"
 
     name;
     values;

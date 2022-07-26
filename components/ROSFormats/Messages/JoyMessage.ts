@@ -1,12 +1,14 @@
 import { colors } from "../ColorSheet";
+import Header from "../Header";
 
 export default class JoyMessage {
-    __color = colors[8];
+    static __color = colors[9];
+    static type = "JoyMessage"
 
     header;
     axes;
     buttons;
-    constructor(header: Headers, axes: number[], buttons: number[]) {
+    constructor(header: Header, axes: number[], buttons: number[]) {
 
         this.header = header;
         this.axes = axes;

@@ -2,7 +2,8 @@ import { colors } from "../ColorSheet";
 import Header from "../Header";
 
 export default class CompressedImageMessage {
-    __color = colors[5];
+    static __color = colors[5];
+    static type = "CompressedImageMessage"
 
 
     header;

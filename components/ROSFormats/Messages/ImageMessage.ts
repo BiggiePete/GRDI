@@ -1,7 +1,8 @@
 import Header from "../Header"
 import { colors } from "../ColorSheet";
 export default class ImageMessage {
-    __color = colors[1];
+    static __color = colors[1];
+    static type = "ImageMessage";
 
     header;
     height;

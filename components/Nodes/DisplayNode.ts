@@ -1,12 +1,13 @@
 import { Node } from "@baklavajs/core";
 
 export class DisplayNode extends Node {
-    type = "DisplayNode";
+    type = "Display";
     name = "Value";
+    static _group = "SimpleNodes"
 
     constructor() {
         super();
-        this.addInputInterface("Value","","",{type: "number"});
+        this.addInputInterface("Value");
     }
     public calculate() {
         const v = this.getInterface("Value").value
