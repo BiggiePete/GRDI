@@ -1,8 +1,6 @@
 <template>
-    <div
-    @keydown.ctrl.83.prevent.stop="SaveProject"
-    >
-        <Navigation @save="SaveProject" @load="LoadProject"></Navigation>
+    <div @keydown.ctrl.83.prevent.stop="SaveProject">
+        <Navigation @save="SaveProject" @load="LoadProject" @loadrecent="LoadRecent"></Navigation>
         <div id="EditorDiv">
             <baklava-editor :plugin="viewPlugin"></baklava-editor>
         </div>
@@ -51,6 +49,7 @@ export default {
         SaveProject() {
             let data = this.editor.save();
             Save.SaveJSON("Project.grdi", JSON.stringify(data));
+            localStorage.setItem("Recent",JSON.stringify(data))
         },
         LoadProject() {
             let input = document.createElement("input");
@@ -65,11 +64,14 @@ export default {
             };
             input.click();
         },
+        LoadRecent(){
+            this.editor.load(localStorage.getItem('Recent'));
+        },
         RegisterNodes() {
-            this.editor.registerNodeType("MathNode", MathNode);
-            this.editor.registerNodeType("DisplayNode", DisplayNode,DisplayNode._group);
-            this.editor.registerNodeType("CameraNode", CameraNode);
-            this.editor.registerNodeType("SplitterNode", SplitterNode,SplitterNode._group);
+            this.editor.registerNodeType("Math", MathNode);
+            this.editor.registerNodeType("Display", DisplayNode, DisplayNode._group);
+            this.editor.registerNodeType("Camera", CameraNode);
+            this.editor.registerNodeType("Splitter", SplitterNode, SplitterNode._group);
         },
         RegisterColors() {
             // for every type of ROS message, register it's respective color
@@ -83,17 +85,20 @@ export default {
 }
 </script>
 <style>
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     color: transparent;
     background: transparent;
     width: 0px;
     height: 0px;
 }
-#EditorDiv{
-position: absolute;
-top: 40px;
-width:100%;
-height: 100%;
-left: 0px;
+
+#EditorDiv {
+    z-index: -1;
+    position: absolute;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
 }
 </style>

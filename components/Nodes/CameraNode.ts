@@ -9,8 +9,8 @@ import Time from "../ROSFormats/Time";
 import RegionOfInterestMessage from "../ROSFormats/Messages/RegionOfInterestMessage";
 
 export class CameraNode extends Node {
-    type = "CameraNode";
-    name = "DeviceName";
+    type = "Camera";
+    name = "Camera Input Device";
     static _group = "Input"
 
     constructor() {

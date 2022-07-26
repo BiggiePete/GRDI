@@ -1,7 +1,7 @@
 import { Node } from "@baklavajs/core";
 
 export class MathNode extends Node {
-    type = "MathNode";
+    type = "Math";
     name = "Math";
     constructor() {
         super();

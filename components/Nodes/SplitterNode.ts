@@ -9,7 +9,7 @@ import Time from "../ROSFormats/Time";
 import RegionOfInterestMessage from "../ROSFormats/Messages/RegionOfInterestMessage";
 
 export class SplitterNode extends Node {
-    name = "SplitterNode"
+    name = "Type Splitter"
     type = "Splitter"
 
     static _group = "SimpleNodes"
