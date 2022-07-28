@@ -1,6 +1,6 @@
 <template>
     <div class="nav">
-        <img src="/GRDILOGO.jpg" alt="" style="max-height:5vh">
+        <img src="/logo.png" alt="" style="max-height:5vh">
         <button @click="save">Save</button>
         <button @click="load">Load</button>
         <button @click="loadrecent">Load Recent</button>
@@ -18,12 +18,12 @@
 
 .nav h3 {
     padding: 10px;
-    color: lime;
+    color: #FEFFFF;
 }
 
 button {
     background-color: #222;
-    color: lime;
+    color: #FEFFFF;
     margin-left: 5px;
     margin-right: 5px;
     margin-top: 1.5vh;
