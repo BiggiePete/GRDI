@@ -1,6 +1,6 @@
 <template>
     <div class="nav">
-        <h3>GRDI</h3>
+        <img src="/GRDILOGO.jpg" alt="" style="max-height:5vh">
         <button @click="save">Save</button>
         <button @click="load">Load</button>
         <button @click="loadrecent">Load Recent</button>
@@ -10,7 +10,7 @@
 <style>
 .nav {
     display: flex;
-    background-color: #444;
+    background-color: #3A3E44;
     z-index: 2;
     width: 100%;
     height: fit-content;
@@ -26,7 +26,7 @@ button {
     color: lime;
     margin-left: 5px;
     margin-right: 5px;
-    margin-top: 1vh;
+    margin-top: 1.5vh;
     width: fit-content;
     height: fit-content;
 }
