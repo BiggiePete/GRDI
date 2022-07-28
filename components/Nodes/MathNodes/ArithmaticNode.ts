@@ -1,14 +1,20 @@
 import { Node } from "@baklavajs/core";
 
-export class MathNode extends Node {
-    type = "Math";
+export class ArithmaticNode extends Node {
+    type = "ArithmaticNode";
     name = "Math";
+    static _info = {
+        type: "Math",
+        group: "Math"
+    }
+
+
     constructor() {
         super();
         this.addInputInterface("Number 1", "NumberOption", 1);
         this.addInputInterface("Number 2", "NumberOption", 10);
         this.addOption("Operation", "SelectOption", "Add", undefined, {
-            items: ["Add", "Subtract", "Multiply"]
+            items: ["Add", "Subtract", "Multiply","Divide"]
         });
         this.addOutputInterface("Result");
     }
@@ -24,6 +30,8 @@ export class MathNode extends Node {
             result = n1 - n2;
         } else if (operation === "Multiply") {
             result = n1 * n2;
+        } else if (operation === "Divide"){
+            result = n1 / n2
         }
         this.getInterface("Result").value = result;
     }

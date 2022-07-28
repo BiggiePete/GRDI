@@ -1,17 +1,20 @@
 import { Node } from "@baklavajs/core";
 
 //datatypes
-import CameraInfoMessage from "../ROSFormats/Messages/CameraInfoMessage";
-import ImageMessage from "../ROSFormats/Messages/ImageMessage";
-import CompressedImageMessage from "../ROSFormats/Messages/CompressedImageMessages";
-import Header from "../ROSFormats/Header";
-import Time from "../ROSFormats/Time";
-import RegionOfInterestMessage from "../ROSFormats/Messages/RegionOfInterestMessage";
+import CameraInfoMessage from "../../ROSFormats/Messages/CameraInfoMessage";
+import ImageMessage from "../../ROSFormats/Messages/ImageMessage";
+import CompressedImageMessage from "../../ROSFormats/Messages/CompressedImageMessages";
+import Header from "../../ROSFormats/Header";
+import Time from "../../ROSFormats/Time";
+import RegionOfInterestMessage from "../../ROSFormats/Messages/RegionOfInterestMessage";
 
 export class CameraNode extends Node {
     type = "Camera";
     name = "Camera Input Device";
-    static _group = "Input"
+    static _info = {
+        type: "Camera",
+        group: "Input"
+    }
 
     constructor() {
         super();

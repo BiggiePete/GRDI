@@ -11,7 +11,7 @@
 .nav {
     display: flex;
     background-color: #444;
-    z-index: 1;
+    z-index: 2;
     width: 100%;
     height: fit-content;
 }
@@ -29,7 +29,6 @@ button {
     margin-top: 1vh;
     width: fit-content;
     height: fit-content;
-
 }
 
 button:hover {

@@ -10,6 +10,7 @@ import JointStateMessage from "./Messages/JointStateMessage";
 import JoyFeedbackMessage from "./Messages/JoyFeedbackMessage";
 import JoyMessage from "./Messages/JoyMessage";
 import RegionOfInterestMessage from "./Messages/RegionOfInterestMessage";
+import Vector3 from "./Vector3";
 
 export const ROSMessages = [
     BatteryStateMessage,
@@ -24,4 +25,6 @@ export const ROSMessages = [
     JoyMessage,
     RegionOfInterestMessage,
     JoyFeedbackMessage,
+    
+    Vector3,
 ]

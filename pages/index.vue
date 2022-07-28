@@ -8,22 +8,19 @@
 </template>
 
 <script>
-import { Editor, NodeBuilder } from "@baklavajs/core"
+import { Editor } from "@baklavajs/core"
 import { ViewPlugin } from "@baklavajs/plugin-renderer-vue"
 import { Engine } from "@baklavajs/plugin-engine"
 import { InterfaceTypePlugin } from "@baklavajs/plugin-interface-types"
 import { OptionPlugin } from "@baklavajs/plugin-options-vue"
 
 
-import { MathNode } from "@/components/Nodes/MathNode.ts"
-import { DisplayNode } from "@/components/Nodes/DisplayNode.ts"
-import { CameraNode } from "@/components/Nodes/CameraNode.ts"
-import { SplitterNode } from "@/components/Nodes/SplitterNode.ts"
+import { AllNodes } from "@/components/Nodes/AllNodes.ts"
 
 
 import * as Save from "@/static/Scripts/SaveJson.ts"
 import { ROSMessages } from "~/components/ROSFormats/ROSMessages_All.ts"
-import Navigation from "~/components/Navigation.vue"
+import Navigation from "@/components/Navigation.vue"
 
 export default {
     data: () => ({
@@ -49,7 +46,7 @@ export default {
         SaveProject() {
             let data = this.editor.save();
             Save.SaveJSON("Project.grdi", JSON.stringify(data));
-            localStorage.setItem("Recent",JSON.stringify(data));
+            localStorage.setItem("Recent", JSON.stringify(data));
         },
         LoadProject() {
             let input = document.createElement("input");
@@ -64,22 +61,21 @@ export default {
             };
             input.click();
         },
-        LoadRecent(){
+        LoadRecent() {
             this.editor.load(JSON.parse(localStorage.getItem("Recent")));
         },
         RegisterNodes() {
-            this.editor.registerNodeType("Math", MathNode);
-            this.editor.registerNodeType("Display", DisplayNode, DisplayNode._group);
-            this.editor.registerNodeType("Camera", CameraNode);
-            this.editor.registerNodeType("Splitter", SplitterNode, SplitterNode._group);
+            AllNodes.forEach((n) => {
+                this.editor.registerNodeType(n._info.type, n, n._info.group);
+            })
         },
         RegisterColors() {
             // for every type of ROS message, register it's respective color
             ROSMessages.forEach((m) => {
                 this.intfTypePlugin.addType(m.type, m.__color)
-
             })
-        }
+        },
+
     },
     components: { Navigation }
 }

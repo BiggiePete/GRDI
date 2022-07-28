@@ -1,16 +1,20 @@
 import { Node } from "@baklavajs/core";
 
 //datatypes
-import CameraInfoMessage from "../ROSFormats/Messages/CameraInfoMessage";
-import ImageMessage from "../ROSFormats/Messages/ImageMessage";
-import CompressedImageMessage from "../ROSFormats/Messages/CompressedImageMessages";
-import Header from "../ROSFormats/Header";
-import Time from "../ROSFormats/Time";
-import RegionOfInterestMessage from "../ROSFormats/Messages/RegionOfInterestMessage";
+import CameraInfoMessage from "../../ROSFormats/Messages/CameraInfoMessage";
+import ImageMessage from "../../ROSFormats/Messages/ImageMessage";
+import CompressedImageMessage from "../../ROSFormats/Messages/CompressedImageMessages";
+import Header from "../../ROSFormats/Header";
+import Time from "../../ROSFormats/Time";
+import RegionOfInterestMessage from "../../ROSFormats/Messages/RegionOfInterestMessage";
 
 export class SplitterNode extends Node {
     name = "Type Splitter"
     type = "Splitter"
+    static _info = {
+        type: "Splitter",
+        group: "SimpleNodes"
+    }
 
     static _group = "SimpleNodes"
     constructor() {

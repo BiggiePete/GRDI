@@ -1,4 +1,7 @@
 export default class Vector3 {
+    static type = "Vector3"
+    static __color = "#0EB5BD"
+
     x;
     y;
     z;
