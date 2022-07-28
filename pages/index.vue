@@ -49,7 +49,7 @@ export default {
         SaveProject() {
             let data = this.editor.save();
             Save.SaveJSON("Project.grdi", JSON.stringify(data));
-            localStorage.setItem("Recent",JSON.stringify(data))
+            localStorage.setItem("Recent",JSON.stringify(data));
         },
         LoadProject() {
             let input = document.createElement("input");
@@ -65,7 +65,7 @@ export default {
             input.click();
         },
         LoadRecent(){
-            this.editor.load(localStorage.getItem('Recent'));
+            this.editor.load(JSON.parse(localStorage.getItem("Recent")));
         },
         RegisterNodes() {
             this.editor.registerNodeType("Math", MathNode);
