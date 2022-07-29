@@ -4,8 +4,12 @@ import {
 } from 'events'
 import {
   BrowserWindow,
-  app
+  app,
+  Menu,
 } from 'electron'
+import {
+  MenuTemplate
+} from './boot/menuTemplate'
 const DEV_SERVER_URL = process.env.DEV_SERVER_URL
 const isProduction = process.env.NODE_ENV === 'production'
 const isDev = process.env.NODE_ENV === 'development'
@@ -32,6 +36,7 @@ export default class BrowserWinHandler {
     else {
       app.once('ready', () => {
         this._create()
+
       })
     }
 
@@ -49,11 +54,13 @@ export default class BrowserWinHandler {
         webSecurity: isProduction, // disable on dev to allow loading local resources
         nodeIntegration: true, // allow loading modules via the require () function
         contextIsolation: false, // https://github.com/electron/electron/issues/18037#issuecomment-806320028
-        devTools: false,
+        devTools: true,
 
       },
       icon: "../../build/icons/logo.ico",
     })
+    const menu = Menu.buildFromTemplate(MenuTemplate(this.browserWindow))
+    Menu.setApplicationMenu(menu);
     this.browserWindow.on('closed', () => {
       // Dereference the window object
       this.browserWindow = null

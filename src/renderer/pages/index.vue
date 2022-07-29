@@ -1,6 +1,5 @@
 <template>
     <div @keydown.ctrl.83.prevent.stop="SaveProject">
-        <Navigation @save="SaveProject" @load="LoadProject" @loadrecent="LoadRecent"></Navigation>
         <div id="EditorDiv">
             <baklava-editor :plugin="viewPlugin"></baklava-editor>
         </div>
@@ -8,6 +7,7 @@
 </template>
 
 <script>
+const electron = require('electron')
 import { Editor } from "@baklavajs/core"
 import { ViewPlugin } from "@baklavajs/plugin-renderer-vue"
 import { Engine } from "@baklavajs/plugin-engine"
@@ -20,7 +20,7 @@ import { AllNodes } from "@/components/Nodes/AllNodes.ts"
 
 import * as Save from "@/static/Scripts/SaveJson.ts"
 import { ROSMessages } from "~/components/ROSFormats/ROSMessages_All.ts"
-import Navigation from "@/components/Navigation.vue"
+
 
 export default {
     data: () => ({
@@ -30,12 +30,18 @@ export default {
         intfTypePlugin: new InterfaceTypePlugin()
     }),
     created() {
+        electron.ipcRenderer.on('FILE_OPEN', (event, args) => {
+            // here the args will be the fileObj.filePaths array 
+            // do whatever you need to do with it 
+            this.LoadProject(args)
+        })
+
+
         this.editor.use(this.viewPlugin);
         this.editor.use(this.engine);
         this.editor.use(new OptionPlugin());
         this.editor.use(this.intfTypePlugin);
         this.viewPlugin.enableMinimap = false;
-
         //add nodes
         this.RegisterNodes();
 
@@ -48,18 +54,10 @@ export default {
             Save.SaveJSON("Project.grdi", JSON.stringify(data));
             localStorage.setItem("Recent", JSON.stringify(data));
         },
-        LoadProject() {
-            let input = document.createElement("input");
-            input.type = "file";
-            input.setAttribute("multiple", false);
-            input.setAttribute("accept", ".grdi");
-            input.onchange = _this => {
-                const file = Array.from(input.files);
-                input.files[0].text().then((e) => {
-                    this.editor.load(JSON.parse(e));
-                });
-            };
-            input.click();
+        LoadProject(event) {
+            const fs = require('fs');
+            this.editor.load(JSON.parse(fs.readFileSync(event[0])))
+            
         },
         LoadRecent() {
             this.editor.load(JSON.parse(localStorage.getItem("Recent")));
@@ -77,7 +75,6 @@ export default {
         },
 
     },
-    components: { Navigation }
 }
 </script>
 <style>
