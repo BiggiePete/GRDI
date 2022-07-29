@@ -2,7 +2,7 @@ import { Node } from "@baklavajs/core";
 import Vector3 from "~/components/ROSFormats/Vector3";
 
 export class CreateVectorNode extends Node {
-    type = "VectorMath";
+    type = "Vector.Create";
     name = "Create Vector";
     static _info = {
         type: "Vector.Create",

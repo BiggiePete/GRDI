@@ -4,7 +4,7 @@ export class ArithmaticNode extends Node {
     type = "ArithmaticNode";
     name = "Math";
     static _info = {
-        type: "Math",
+        type: "ArithmaticNode",
         group: "Math"
     }
 

@@ -52,7 +52,7 @@ export default {
             let input = document.createElement("input");
             input.type = "file";
             input.setAttribute("multiple", false);
-            input.setAttribute("accept", ".GRDI");
+            input.setAttribute("accept", ".grdi");
             input.onchange = _this => {
                 const file = Array.from(input.files);
                 input.files[0].text().then((e) => {

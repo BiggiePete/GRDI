@@ -2,7 +2,7 @@ import { Node } from "@baklavajs/core";
 import Vector3 from "~/components/ROSFormats/Vector3";
 
 export class NormalizeVectorNode extends Node {
-    type = "VectorMath";
+    type = "Vector.Norm";
     name = "Normalize";
     static _info = {
         type: "Vector.Norm",

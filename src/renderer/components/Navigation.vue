@@ -1,6 +1,6 @@
 <template>
     <div class="nav">
-        <img src="/logo.png" alt="" style="max-height:5vh">
+        <img src="/logo.png" alt="">
         <button @click="save">Save</button>
         <button @click="load">Load</button>
         <button @click="loadrecent">Load Recent</button>
@@ -14,6 +14,8 @@
     z-index: 2;
     width: 100%;
     height: fit-content;
+    font-family: 'Roboto';
+    height: 64px;
 }
 
 .nav h3 {
@@ -26,7 +28,9 @@ button {
     color: #FEFFFF;
     margin-left: 5px;
     margin-right: 5px;
-    margin-top: 1.5vh;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 7px;
     width: fit-content;
     height: fit-content;
 }
