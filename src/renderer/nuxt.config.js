@@ -20,7 +20,7 @@ module.exports = {
       src: '@/plugins/icons.js'
     },
     {
-      src: '~/plugins/baklava.js',
+      src: '@/plugins/baklava.js',
       mode: 'client',
       ssr: false,
     }

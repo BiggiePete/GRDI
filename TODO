@@ -1,3 +1,13 @@
 fix color issue
 add coloring for all data message types,
 create "seperator" node
+
+
+Styling TODO
+
+all base components will contain the following attributes when it comes to Styling
+    width
+    height
+    x left
+    y top
+    these will represent how all "windows" are drawn inside the parent window

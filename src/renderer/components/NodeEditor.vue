@@ -1,6 +1,6 @@
 <template>
-    <div @keydown.ctrl.83.prevent.stop="SaveProject" id="EditorDiv">
-        <baklava-editor :plugin="viewPlugin"></baklava-editor>
+    <div @keydown.ctrl.83.prevent.stop="SaveProject">
+        <baklava-editor id="EditorDiv" :plugin="viewPlugin"></baklava-editor>
     </div>
 </template>
 
@@ -25,24 +25,8 @@ export default {
         editor: new Editor(),
         viewPlugin: new ViewPlugin(),
         engine: new Engine(true),
-        intfTypePlugin: new InterfaceTypePlugin()
+        intfTypePlugin: new InterfaceTypePlugin(),
     }),
-    props: {
-        TopOffset: Number,
-        BottomOffset: Number,
-        LeftOffset: Number,
-        RightOffset: Number,
-    },
-    computed: {
-        Offsets() {
-            return {
-                "top : ": this.TopOffset + "px",
-                "bottom : ": this.BottomOffset + "px",
-                "left : ": this.LeftOffset + "px",
-                "right : ": this.RightOffset + "px",
-            }
-        }
-    },
     created() {
         electron.ipcRenderer.on('FILE_OPEN', (event, args) => {
             // here the args will be the fileObj.filePaths array 
@@ -54,6 +38,7 @@ export default {
         this.editor.use(new OptionPlugin());
         this.editor.use(this.intfTypePlugin);
         this.viewPlugin.enableMinimap = false;
+
         //add nodes
         this.RegisterNodes();
 
