@@ -1,8 +1,6 @@
 <template>
-    <div @keydown.ctrl.83.prevent.stop="SaveProject">
-        <div id="EditorDiv">
-            <baklava-editor :plugin="viewPlugin"></baklava-editor>
-        </div>
+    <div @keydown.ctrl.83.prevent.stop="SaveProject" id="EditorDiv">
+        <baklava-editor :plugin="viewPlugin"></baklava-editor>
     </div>
 </template>
 
@@ -19,7 +17,7 @@ import { AllNodes } from "@/components/Nodes/AllNodes.ts"
 
 
 import * as Save from "@/static/Scripts/SaveJson.ts"
-import { ROSMessages } from "~/components/ROSFormats/ROSMessages_All.ts"
+import { ROSMessages } from "@/components/ROSFormats/ROSMessages_All.ts"
 
 
 export default {
@@ -29,14 +27,28 @@ export default {
         engine: new Engine(true),
         intfTypePlugin: new InterfaceTypePlugin()
     }),
+    props: {
+        TopOffset: Number,
+        BottomOffset: Number,
+        LeftOffset: Number,
+        RightOffset: Number,
+    },
+    computed: {
+        Offsets() {
+            return {
+                "top : ": this.TopOffset + "px",
+                "bottom : ": this.BottomOffset + "px",
+                "left : ": this.LeftOffset + "px",
+                "right : ": this.RightOffset + "px",
+            }
+        }
+    },
     created() {
         electron.ipcRenderer.on('FILE_OPEN', (event, args) => {
             // here the args will be the fileObj.filePaths array 
             // do whatever you need to do with it 
             this.LoadProject(args)
         })
-
-
         this.editor.use(this.viewPlugin);
         this.editor.use(this.engine);
         this.editor.use(new OptionPlugin());
@@ -57,7 +69,7 @@ export default {
         LoadProject(event) {
             const fs = require('fs');
             this.editor.load(JSON.parse(fs.readFileSync(event[0])))
-            
+
         },
         LoadRecent() {
             this.editor.load(JSON.parse(localStorage.getItem("Recent")));
@@ -73,7 +85,6 @@ export default {
                 this.intfTypePlugin.addType(m.type, m.__color)
             })
         },
-
     },
 }
 </script>
@@ -88,10 +99,5 @@ export default {
 #EditorDiv {
     z-index: -1;
     position: absolute;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
 }
 </style>

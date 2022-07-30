@@ -1,20 +1,40 @@
 <template>
-  <div>
-    <pages></pages>
+  <div class="screen">
+    <div class="center">
+      <node-editor v-bind:style="StyleObject"></node-editor>
+    </div>
   </div>
 </template>
 
 <script>
-import Pages from '~/pages/index.vue';
+import NodeEditor from '~/components/NodeEditor.vue';
 
 export default {
-    name: "DefaultLayout",
-    components: { Pages }
+  name: "DefaultLayout",
+  components: { NodeEditor },
+  methods: {
+    computeEditorSize() {
+    }
+  },
+  data: {
+    styleObject: {
+      TopOffset: "10px",
+      BottomOffset: "10px",
+      LeftOffset: "10px",
+      RightOffset: "10px",
+    }
+  },
+
+
 }
 </script>
 
 <style>
 body {
   margin: 0 !important;
+}
+
+.screen {
+  position: absolute;
 }
 </style>
