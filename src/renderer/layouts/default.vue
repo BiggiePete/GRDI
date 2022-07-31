@@ -3,6 +3,7 @@
         <link rel="stylesheet" href="/Styles/splitpanes.css">
         <splitpanes class="default-theme" :push-other-panes="false">
             <pane id="LeftPanel" size="20">
+                <!--all-nodes></all-nodes-->
                 Left Panel
             </pane>
             <pane>
@@ -28,34 +29,11 @@
 <script>
 import NodeEditor from '@/components/NodeEditor.vue';
 import { Splitpanes, Pane } from 'splitpanes'
+//import AllNodes from '~/components/AllNodes.vue';
 
 export default {
     name: "DefaultLayout",
     data: () => ({
-        editorSize: {
-            x: 0,
-            y: 0,
-            w: 0,
-            h: 0,
-        },
-        LeftPane: {
-            x: 0,
-            y: 0,
-            w: 0,
-            h: 0,
-        },
-        RightPane: {
-            x: 0,
-            y: 0,
-            w: 0,
-            h: 0,
-        },
-        BottomPane: {
-            x: 0,
-            y: 0,
-            w: 0,
-            h: 0,
-        }
     }),
     created() {
     },
@@ -66,7 +44,8 @@ export default {
     components: {
         NodeEditor,
         Splitpanes,
-        Pane
+        Pane,
+        //AllNodes,
     },
 
 
