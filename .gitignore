@@ -3,3 +3,4 @@ dist
 build/*
 !build/icons
 node_modules
+!node_modules/@baklavajs/plugin-renderer-vue/dist/styles.css
