@@ -1,12 +1,7 @@
 <template>
     <div class="screen">
         <div class="center">
-            <node-editor id="editor" v-bind:style="{
-                top: computeEditorSize.y,
-                left: computeEditorSize.x,
-                width: computeEditorSize.w,
-                height: computeEditorSize.h,
-            }"></node-editor>
+            <node-editor id="editor"></node-editor>
         </div>
     </div>
 </template>
@@ -22,27 +17,31 @@ export default {
             y: 0,
             w: 0,
             h: 0,
+        },
+        LeftPane: {
+            x: 0,
+            y: 0,
+            w: 0,
+            h: 0,
+        },
+        RightPane: {
+            x: 0,
+            y: 0,
+            w: 0,
+            h: 0,
+        },
+        BottomPane: {
+            x: 0,
+            y: 0,
+            w: 0,
+            h: 0,
         }
     }),
     created() {
-        window.addEventListener("resize", this.windowResize);
-
     },
     methods: {
-        windowResize(){
-            this.changeEditorSize(0,0,window.innerWidth,window.innerHeight)
-        },
-        changeEditorSize(x, y, w, h) {
-            this.editorSize.x = x + "px"
-            this.editorSize.y = y + "px"
-            this.editorSize.w = w + "px"
-            this.editorSize.h = h + "px"
-        }
     },
     computed: {
-        computeEditorSize(){
-            return this.editorSize
-        }
     },
     components: { NodeEditor },
 
@@ -56,6 +55,15 @@ body {
 }
 
 .screen {
-    position: absolute;
+    position: relative;
+    display: flex;
+}
+.center{
+    width: 50vw;
+    height: 100vh;
+}
+#editor{
+    width: inherit;
+    height: inherit;
 }
 </style>

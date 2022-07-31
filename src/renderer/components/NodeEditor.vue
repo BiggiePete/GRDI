@@ -1,6 +1,6 @@
 <template>
-    <div @keydown.ctrl.83.prevent.stop="SaveProject">
-        <baklava-editor id="EditorDiv" :plugin="viewPlugin"></baklava-editor>
+    <div @keydown.ctrl.83.prevent.stop="SaveProject" class="EditorDiv">
+        <baklava-editor :plugin="viewPlugin"></baklava-editor>
     </div>
 </template>
 
@@ -21,6 +21,14 @@ import { ROSMessages } from "@/components/ROSFormats/ROSMessages_All.ts"
 
 
 export default {
+    props: {
+        editorSize: {
+            x: Number,
+            y: Number,
+            w: Number,
+            h: Number,
+        }
+    },
     data: () => ({
         editor: new Editor(),
         viewPlugin: new ViewPlugin(),
@@ -37,7 +45,7 @@ export default {
         this.editor.use(this.engine);
         this.editor.use(new OptionPlugin());
         this.editor.use(this.intfTypePlugin);
-        this.viewPlugin.enableMinimap = false;
+        this.viewPlugin.enableMinimap = true;
 
         //add nodes
         this.RegisterNodes();
@@ -81,7 +89,7 @@ export default {
     height: 0px;
 }
 
-#EditorDiv {
+.EditorDiv {
     z-index: -1;
     position: absolute;
 }
