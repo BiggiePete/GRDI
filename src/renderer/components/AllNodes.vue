@@ -1,62 +1,121 @@
 <template>
-    <div>
-        <input type="text" v-model="input" placeholder="Search Nodes " />
-        <div class="item node" v-for="node in filteredList()" :key="node">
-            <p class="fa-solid fa-caret-right">{{ node.name }}</p>
-        </div>
-        <div class="item error" v-if="input && !filteredList().length">
-            <p>No Results!</p>
-        </div>
+    <div class="searchpane">
+        <v-treeview :items="folders" class="treeview"></v-treeview>
     </div>
 </template>
 
 <script>
+
 export default {
     data() {
         return {
-            nodes: []
+            folders: [
+                {
+                    name: 'Math',
+                    children: [
+                        {
+                            name: "Arithmatic"
+                        },
+                        {
+                            name: "OtherMath"
+                        }
+                    ]
+                },
+                {
+                    name: "Sensors",
+                    children: [
+                        {
+                            name: 'Camera',
+                            children: [
+                                {
+                                    name: "RPI Camera"
+                                },
+                                {
+                                    name: "Logitech"
+                                },
+                                {
+                                    name: "ZED",
+                                    children: [
+                                        {
+                                            name: "Mini"
+                                        },
+                                        {
+                                            name: "Zed 2"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            name: "Lidar"
+                        },
+                        {
+                            name: "Prox Switch"
+                        }
+                    ]
+                },
+                {
+                    name: "Strings"
+                }
+            ],
+            input: ""
         }
     },
+    created() {
+
+    },
     methods: {
-        // filteredList() {
-        //     return nodes.filter((node) => {
-        //         let input = ref("");
-        //         node.toLowerCase().includes(input.value.toLowerCase())
-        //     });
+        updateNodeList() {
+
         }
     }
+}
 </script>
 
 <style>
+.searchpane {
+    background: #333;
+    font-size: medium;
+}
+
+.theme--light.v-icon {
+    color: rgba(255, 255, 255, 0.77) !important;
+}
+
+.treeview {
+    color: white !important;
+}
+
 input {
     display: block;
-    width: 350px;
+    width: 100%;
     margin: 20px auto;
     padding: 10px 45px;
     background-size: 15px 15px;
     font-size: 16px;
     border: none;
-    border-radius: 5px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    color: #f2f2f2;
 }
 
 .item {
     width: 350px;
-    margin: 0 auto 10px auto;
-    padding: 10px 20px;
+    height: fit-content;
+    font-size: medium;
+    padding: 5px;
     color: white;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
-        rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    cursor: pointer;
 }
 
-.fruit {
-    background-color: rgb(97, 62, 252);
-    cursor: pointer;
+.node {
+    height: fit-content;
+}
+
+.indent {
+    margin-left: 10px;
 }
 
 .error {
     background-color: tomato;
+    cursor: not-allowed;
 }
 </style>

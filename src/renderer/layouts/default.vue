@@ -3,8 +3,7 @@
         <link rel="stylesheet" href="/Styles/splitpanes.css">
         <splitpanes class="default-theme" :push-other-panes="false">
             <pane id="LeftPanel" size="20">
-                <!--all-nodes></all-nodes-->
-                Left Panel
+                <all-nodes class="fullscreen"></all-nodes>
             </pane>
             <pane>
                 <splitpanes :push-other-panes="false" horizontal>
@@ -12,7 +11,7 @@
                         Top Panel
                     </pane>
                     <pane id="EditorPanel" size="82">
-                        <node-editor id="editor"></node-editor>
+                        <node-editor id="editor" class="fullscreen"></node-editor>
                     </pane>
                     <pane id="BottomPanel">
                         Bottom Panel
@@ -29,7 +28,7 @@
 <script>
 import NodeEditor from '@/components/NodeEditor.vue';
 import { Splitpanes, Pane } from 'splitpanes'
-//import AllNodes from '~/components/AllNodes.vue';
+import AllNodes from '~/components/AllNodes.vue';
 
 export default {
     name: "DefaultLayout",
@@ -45,7 +44,7 @@ export default {
         NodeEditor,
         Splitpanes,
         Pane,
-        //AllNodes,
+        AllNodes,
     },
 
 
@@ -67,7 +66,7 @@ body {
     height: 100vh;
 }
 
-#editor {
+.fullscreen {
     width: 100%;
     height: 100%;
 }
