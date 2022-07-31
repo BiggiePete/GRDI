@@ -21,8 +21,8 @@ export class VectorNode extends Node {
     }
 
     calculate() {
-        const n1: Vector3 = this.getInterface("Number 1").value;
-        const n2: Vector3 = this.getInterface("Number 2").value;
+        const n1: Vector3 = this.getInterface("Vector 1").value;
+        const n2: Vector3 = this.getInterface("Vector 2").value;
         const operation = this.getOptionValue("Operation");
         let result;
         if (operation === "Add") {
