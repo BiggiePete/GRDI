@@ -90,7 +90,7 @@ export default {
 }
 
 .EditorDiv {
-    z-index: -1;
+    z-index: 1;
     position: absolute;
 }
 </style>

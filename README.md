@@ -12,6 +12,10 @@ Goal is to make a design interface for robots using ROS, allowing users to quick
 
 thanks to the simplicity of web development, the application can be run with the following commands 
 
+### Prerequisites
+    nodejs
+    yarn
+
 ### INSTALL
 
     #Clone the Repo
@@ -21,7 +25,7 @@ thanks to the simplicity of web development, the application can be run with the
     cd ./GRDI/
 
     #Install and Run
-    npm i
-    npm run dev
+    yarn install
+    yarn dev
 
 Once the server is Running, go into your browser and go to localhost:3000

@@ -1,6 +1,6 @@
 {
   "name": "grdi",
-  "version": "0.0.1",
+  "version": "0.1.17",
   "description": "An electron-nuxt project",
   "main": "./dist/main/index.js",
   "scripts": {
@@ -34,12 +34,13 @@
     "electron-devtools-installer": "^3.2.0",
     "nuxt": "^2.15.8",
     "roboto-fontface": "^0.10.0",
-    "sass-loader": "12.4.0",
     "vuetify": "^2.5.10",
     "webpack": "^4.46.0",
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
-    "baklavajs": "^1.10.1"
+    "baklavajs": "^1.10.1",
+    "sass-loader": "10",
+    "splitpanes": "^2.4.1"
   }
 }
