@@ -10,9 +10,10 @@ Goal is to make a design interface for robots using ROS, allowing users to quick
 
 ## Run the DEMO
 
-thanks to the simplicity of web development, the application can be run with the following commands 
+thanks to the simplicity of web development, the application can be run with the following commands
 
 ### Prerequisites
+
     nodejs
     yarn
 
