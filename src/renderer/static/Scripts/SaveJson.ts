@@ -12,6 +12,7 @@ export function SaveJSON(filename: string, dataObjToWrite: string) {
         cancelable: true,
     });
 
-    link.dispatchEvent(evt);
+    //link.dispatchEvent(evt);
+    link.click()
     link.remove()
 }

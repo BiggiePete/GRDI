@@ -6,6 +6,9 @@
 
 <script>
 const electron = require('electron')
+const fs = require('fs');
+//const { dialog } = require('electron').remote
+
 import { Editor } from "@baklavajs/core"
 import { ViewPlugin } from "@baklavajs/plugin-renderer-vue"
 import { Engine } from "@baklavajs/plugin-engine"
@@ -16,8 +19,8 @@ import { OptionPlugin } from "@baklavajs/plugin-options-vue"
 import { AllNodes } from "@/components/Nodes/AllNodes.ts"
 
 
-import * as Save from "@/static/Scripts/SaveJson.ts"
 import { ROSMessages } from "@/components/ROSFormats/ROSMessages_All.ts"
+import { SaveJSON } from "~/static/Scripts/SaveJson";
 
 
 export default {
@@ -37,9 +40,16 @@ export default {
     }),
     created() {
         electron.ipcRenderer.on('FILE_OPEN', (event, args) => {
-            // here the args will be the fileObj.filePaths array 
-            // do whatever you need to do with it 
-            this.LoadProject(args)
+            this.LoadProject(args);
+        })
+        electron.ipcRenderer.on('save', (event, args) => {
+            this.SaveProject();
+        })
+        electron.ipcRenderer.on('loadcache', (event, args) => {
+            this.LoadRecent();
+        })
+        electron.ipcRenderer.on('new', (event, args) => {
+            this.NewProject();
         })
         this.editor.use(this.viewPlugin);
         this.editor.use(this.engine);
@@ -56,13 +66,26 @@ export default {
     methods: {
         SaveProject() {
             let data = this.editor.save();
-            Save.SaveJSON("Project.grdi", JSON.stringify(data));
+            let options = {
+                title: "Save File",
+                defaultPath: "Project" + new Date() + ".grdi",
+                buttonLabel: "Save",
+
+                filters: [
+                    { name: 'grdi', extentions: ['grdi'] }
+                ]
+            };
             localStorage.setItem("Recent", JSON.stringify(data));
+            SaveJSON('Project.grdi',JSON.stringify(data))
+            // dialog.showSaveDialog(null, options).then(({ fp }) => {
+            //     fs.writeFileSync(fp, JSON.stringify(data), 'utf-8')
+            // })
         },
         LoadProject(event) {
-            const fs = require('fs');
             this.editor.load(JSON.parse(fs.readFileSync(event[0])))
-
+        },
+        NewProject() {
+            getCurrentWindow().reload();
         },
         LoadRecent() {
             this.editor.load(JSON.parse(localStorage.getItem("Recent")));

@@ -55,6 +55,7 @@ export default class BrowserWinHandler {
         nodeIntegration: true, // allow loading modules via the require () function
         contextIsolation: false, // https://github.com/electron/electron/issues/18037#issuecomment-806320028
         devTools: true,
+        enableremotemodule: true,
 
       },
       icon: "../../build/icons/logo.ico",
