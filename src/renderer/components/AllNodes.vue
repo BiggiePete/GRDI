@@ -97,25 +97,4 @@ input {
     color: #f2f2f2;
 }
 
-.item {
-    width: 350px;
-    height: fit-content;
-    font-size: medium;
-    padding: 5px;
-    color: white;
-    cursor: pointer;
-}
-
-.node {
-    height: fit-content;
-}
-
-.indent {
-    margin-left: 10px;
-}
-
-.error {
-    background-color: tomato;
-    cursor: not-allowed;
-}
 </style>
