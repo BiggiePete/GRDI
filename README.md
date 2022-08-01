@@ -14,24 +14,28 @@ thanks to the simplicity of web development, the application can be run with the
 
 ### Prerequisites
 
+    nodejs v16
+    yarn
+
 #### Using Ubuntu
 
-curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+```bash
+curl -fsSL <https://deb.nodesource.com/setup_16.x> | sudo -E bash -
 sudo apt-get install -y nodejs
-
-    nodejs
-    yarn
+```
 
 ### INSTALL
 
-    #Clone the Repo
-    git clone https://github.com/BiggiePete/GRDI.git
+```bash
+#Clone the Repo
+git clone https://github.com/BiggiePete/GRDI.git
 
-    # Change DIR
-    cd ./GRDI/
+# Change DIR
+cd ./GRDI/
 
-    #Install and Run
-    yarn install
-    yarn dev
+#Install and Run
+yarn install
+yarn dev
+```
 
 Once the server is Running, go into your browser and go to localhost:3000

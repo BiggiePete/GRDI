@@ -29,8 +29,6 @@ module.exports = {
       mode: "client",
       ssr: false
     }
-
-
   ],
   buildModules: [
     '@nuxt/typescript-build',
