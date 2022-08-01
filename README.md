@@ -14,6 +14,11 @@ thanks to the simplicity of web development, the application can be run with the
 
 ### Prerequisites
 
+#### Using Ubuntu
+
+curl -fsSL <https://deb.nodesource.com/setup_18.x> | sudo -E bash -
+sudo apt-get install -y nodejs
+
     nodejs
     yarn
 
