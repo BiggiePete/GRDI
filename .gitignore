@@ -4,3 +4,4 @@ build/*
 !build/icons
 node_modules
 .editorconfig
+!node_modules/@baklavajs/core/dist/baklavajs-core/src/node.d.ts
