@@ -1,51 +1,52 @@
 {
-  "name": "grdi",
-  "version": "0.1.19",
-  "description": "An electron-nuxt project",
-  "main": "./dist/main/index.js",
-  "scripts": {
-    "dev": "node .electron-nuxt/dev.js",
-    "build": "node .electron-nuxt/build.js",
-    "preinstall": "node .electron-nuxt/check-engines.js",
-    "postinstall": "electron-builder install-app-deps "
-  },
-  "keywords": [],
-  "author": "BiggiePete <pter.cross222@gmail.com>",
-  "license": "MIT",
-  "homepage": "https://github.com/michalzaq12/electron-nuxt/blob/master/README.md",
-  "engines": {
-    "node": ">=14.14.9"
-  },
-  "resolutions": {
-    "@types/node": "14.14.9"
-  },
-  "devDependencies": {
-    "@fortawesome/fontawesome-free": "5.15.3",
-    "@nuxt/typescript-build": "^2.1.0",
-    "@nuxtjs/vuetify": "^1.12.1",
-    "@xpda-dev/core": "^0.1.6",
-    "@xpda-dev/electron-builder": "^0.2.1",
-    "@xpda-dev/electron-launcher": "^0.3.0",
-    "@xpda-dev/webpack-step": "^0.1.6",
-    "cross-env": "^7.0.3",
-    "deepmerge": "^4.2.2",
-    "electron": "^16.0.5",
-    "electron-builder": "^22.14.5",
-    "electron-devtools-installer": "^3.2.0",
-    "nuxt": "^2.15.8",
-    "roboto-fontface": "^0.10.0",
-    "vuetify": "^2.5.10",
-    "webpack": "^4.46.0",
-    "webpack-node-externals": "^3.0.0"
-  },
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.1.2",
-    "@fortawesome/free-brands-svg-icons": "^6.1.2",
-    "@fortawesome/free-regular-svg-icons": "^6.1.2",
-    "@fortawesome/free-solid-svg-icons": "^6.1.2",
-    "@fortawesome/vue-fontawesome": "^2.0.8",
-    "baklavajs": "^1.10.1",
-    "sass-loader": "10",
-    "splitpanes": "^2.4.1"
-  }
+    "name": "grdi",
+    "version": "0.1.19",
+    "description": "An electron-nuxt project",
+    "main": "./dist/main/index.js",
+    "scripts": {
+        "dev": "node .electron-nuxt/dev.js",
+        "build": "node .electron-nuxt/build.js",
+        "preinstall": "node .electron-nuxt/check-engines.js",
+        "postinstall": "electron-builder install-app-deps "
+    },
+    "keywords": [],
+    "author": "BiggiePete <pter.cross222@gmail.com>",
+    "license": "MIT",
+    "homepage": "https://github.com/BiggiePete/GRDI",
+    "engines": {
+        "node": ">=16.0.0 <17.0.0",
+        "npm": ">=8.0.0 <9.0.0"
+    },
+    "resolutions": {
+        "@types/node": "14.14.9"
+    },
+    "devDependencies": {
+        "@fortawesome/fontawesome-free": "5.15.3",
+        "@nuxt/typescript-build": "^2.1.0",
+        "@nuxtjs/vuetify": "^1.12.1",
+        "@xpda-dev/core": "^0.1.6",
+        "@xpda-dev/electron-builder": "^0.2.1",
+        "@xpda-dev/electron-launcher": "^0.3.0",
+        "@xpda-dev/webpack-step": "^0.1.6",
+        "cross-env": "^7.0.3",
+        "deepmerge": "^4.2.2",
+        "electron": "^16.0.5",
+        "electron-builder": "^22.14.5",
+        "electron-devtools-installer": "^3.2.0",
+        "nuxt": "^2.15.8",
+        "roboto-fontface": "^0.10.0",
+        "vuetify": "^2.5.10",
+        "webpack": "^4.46.0",
+        "webpack-node-externals": "^3.0.0"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^6.1.2",
+        "@fortawesome/free-brands-svg-icons": "^6.1.2",
+        "@fortawesome/free-regular-svg-icons": "^6.1.2",
+        "@fortawesome/free-solid-svg-icons": "^6.1.2",
+        "@fortawesome/vue-fontawesome": "^2.0.8",
+        "baklavajs": "^1.10.1",
+        "sass-loader": "10",
+        "splitpanes": "^2.4.1"
+    }
 }
