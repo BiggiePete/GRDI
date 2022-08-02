@@ -4,11 +4,7 @@ import Vector3 from "~/components/ROSFormats/Vector3";
 export class CreateVectorNode extends Node {
     type = "Vector.Create";
     name = "Create Vector";
-    static _info = {
-        type: "Vector.Create",
-        group: "Math"
-    }
-
+    group = "Math";
 
     constructor() {
         super();

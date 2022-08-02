@@ -4,10 +4,7 @@ import Vector3 from "~/components/ROSFormats/Vector3";
 export class DecomposeVectorNode extends Node {
     type = "Vector.Decomp";
     name = "Decompose Vector";
-    static _info = {
-        type: "Vector.Decomp",
-        group: "Math"
-    }
+    group = "Math";
 
 
     constructor() {

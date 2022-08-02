@@ -11,10 +11,8 @@ import RegionOfInterestMessage from "../../ROSFormats/Messages/RegionOfInterestM
 export class CameraNode extends Node {
     type = "Camera";
     name = "Camera Input Device";
-    static _info = {
-        type: "Camera",
-        group: "Input"
-    }
+    group = "Input";
+
 
     constructor() {
         super();

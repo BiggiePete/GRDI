@@ -4,10 +4,7 @@ import Vector3 from "~/components/ROSFormats/Vector3";
 export class NormalizeVectorNode extends Node {
     type = "Vector.Norm";
     name = "Normalize";
-    static _info = {
-        type: "Vector.Norm",
-        group: "Math"
-    }
+    group = "Math";
 
 
     constructor() {

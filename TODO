@@ -1,13 +1,22 @@
-fix color issue
-add coloring for all data message types,
-create "seperator" node
+the time has come, 
+this file will have very poor grammar and will be written like a crazed manifesto
 
 
-Styling TODO
+the following need to be completed in the reasonable future
 
-all base components will contain the following attributes when it comes to Styling
-    width
-    height
-    x left
-    y top
-    these will represent how all "windows" are drawn inside the parent window
+Theme : style everything in a way that makes sense
+Settings : allow users to change primitive Settings
+
+now for the real stuff :
+Custom nodes : a python script needs to be written in and parsed for ROS input (sub) and output (pub)
+Node Tree View : all nodes, custom and canned need to be added to that menu; any node clicked on needs to be appened into the scene
+GRDI file format : GRDI file will need to evolve to a zip file format, with the GRDI file itself being a point where all custom nodes are registered vaguely, but all of the expected python scripts are contained in a seperate folder
+Console Window : grab the console on the bottom, vscode style, get access to a terminal!
+
+
+
+future dream :
+3D : incorperate threejs to create the 3D model for any robot
+roslibjs : incorperate the roslibjs to listen to ROS messages being posted to topics, use this to create a debugger
+Debugger : seperate "Tab" that contains all of the information, this could also be added to the design screen as a tab for the node picker
+

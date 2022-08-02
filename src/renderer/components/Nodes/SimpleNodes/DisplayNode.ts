@@ -3,10 +3,7 @@ import { Node } from "@baklavajs/core";
 export class DisplayNode extends Node {
     type = "Display";
     name = "Value";
-    static _info = {
-        type: "Display",
-        group: "SimpleNodes"
-    }
+    group = "Simple Nodes"
 
     constructor() {
         super();

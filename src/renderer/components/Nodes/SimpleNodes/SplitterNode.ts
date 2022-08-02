@@ -11,10 +11,7 @@ import RegionOfInterestMessage from "../../ROSFormats/Messages/RegionOfInterestM
 export class SplitterNode extends Node {
     name = "Type Splitter"
     type = "Splitter"
-    static _info = {
-        type: "Splitter",
-        group: "SimpleNodes"
-    }
+    group = "Simple Nodes"
 
     static _group = "SimpleNodes"
     constructor() {

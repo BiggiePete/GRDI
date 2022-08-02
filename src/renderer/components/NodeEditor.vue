@@ -21,6 +21,7 @@ import { AllNodes } from "@/components/Nodes/AllNodes.ts"
 
 import { ROSMessages } from "@/components/ROSFormats/ROSMessages_All.ts"
 import { SaveJSON } from "~/static/Scripts/SaveJson";
+import { DisplayNode } from "./Nodes/SimpleNodes/DisplayNode";
 
 
 export default {
@@ -62,6 +63,13 @@ export default {
 
         //add colors
         this.RegisterColors();
+        
+
+        //to add node to the editor screen programically, first instance the node
+        // const n = new MY_NODE();
+        //then add it to the editor
+        // this.editor.addNode(n)
+
     },
     methods: {
         SaveProject() {
@@ -76,7 +84,7 @@ export default {
                 ]
             };
             localStorage.setItem("Recent", JSON.stringify(data));
-            SaveJSON('Project.grdi',JSON.stringify(data))
+            SaveJSON('Project.grdi', JSON.stringify(data))
             // dialog.showSaveDialog(null, options).then(({ fp }) => {
             //     fs.writeFileSync(fp, JSON.stringify(data), 'utf-8')
             // })
@@ -92,7 +100,8 @@ export default {
         },
         RegisterNodes() {
             AllNodes.forEach((n) => {
-                this.editor.registerNodeType(n._info.type, n, n._info.group);
+                const _n = new n();
+                this.editor.registerNodeType(_n.type, n, _n.group);
             })
         },
         RegisterColors() {
