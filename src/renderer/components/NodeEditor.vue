@@ -9,6 +9,8 @@ const electron = require('electron')
 const fs = require('fs');
 //const { dialog } = require('electron').remote
 
+import { eventBus } from "~/plugins/eventBus";
+
 import { Editor } from "@baklavajs/core"
 import { ViewPlugin } from "@baklavajs/plugin-renderer-vue"
 import { Engine } from "@baklavajs/plugin-engine"
@@ -16,22 +18,12 @@ import { InterfaceTypePlugin } from "@baklavajs/plugin-interface-types"
 import { OptionPlugin } from "@baklavajs/plugin-options-vue"
 
 
-import { AllNodes } from "@/components/Nodes/AllNodes.ts"
-
-
 import { ROSMessages } from "@/components/ROSFormats/ROSMessages_All.ts"
-import { SaveJSON } from "~/static/Scripts/SaveJson";
-import { DisplayNode } from "./Nodes/SimpleNodes/DisplayNode";
+import { SaveJSON } from "@/static/Scripts/SaveJson";
 
 
 export default {
     props: {
-        editorSize: {
-            x: Number,
-            y: Number,
-            w: Number,
-            h: Number,
-        }
     },
     data: () => ({
         editor: new Editor(),
@@ -63,31 +55,20 @@ export default {
 
         //add colors
         this.RegisterColors();
-        
 
         //to add node to the editor screen programically, first instance the node
         // const n = new MY_NODE();
         //then add it to the editor
-        // this.editor.addNode(n)
-
+        //this.editor.addNode(n)
+        eventBus.$on("NodeRequested", (data) => {
+            console.log("recieved : " + data)
+        })
     },
     methods: {
         SaveProject() {
             let data = this.editor.save();
-            let options = {
-                title: "Save File",
-                defaultPath: "Project" + new Date() + ".grdi",
-                buttonLabel: "Save",
-
-                filters: [
-                    { name: 'grdi', extentions: ['grdi'] }
-                ]
-            };
             localStorage.setItem("Recent", JSON.stringify(data));
             SaveJSON('Project.grdi', JSON.stringify(data))
-            // dialog.showSaveDialog(null, options).then(({ fp }) => {
-            //     fs.writeFileSync(fp, JSON.stringify(data), 'utf-8')
-            // })
         },
         LoadProject(event) {
             this.editor.load(JSON.parse(fs.readFileSync(event[0])))
@@ -99,10 +80,11 @@ export default {
             this.editor.load(JSON.parse(localStorage.getItem("Recent")));
         },
         RegisterNodes() {
-            AllNodes.forEach((n) => {
-                const _n = new n();
-                this.editor.registerNodeType(_n.type, n, _n.group);
-            })
+            // allNodes.nodeArray.forEach((n) => {
+            //     //const _n = new n();
+            //     //this.editor.registerNodeType(_n.type, n, _n.group);
+            //     console.log(n[0])
+            // })
         },
         RegisterColors() {
             // for every type of ROS message, register it's respective color

@@ -3,7 +3,7 @@
         <link rel="stylesheet" href="/Styles/splitpanes.css">
         <splitpanes class="default-theme" :push-other-panes="false">
             <pane id="LeftPanel" size="20">
-                <all-nodes class="fullscreen"></all-nodes>
+                <node-treeview class="fullscreen"></node-treeview>
             </pane>
             <pane>
                 <splitpanes :push-other-panes="false" horizontal>
@@ -19,7 +19,7 @@
                 </splitpanes>
             </pane>
             <pane id="RightPanel" size="20">
-                Right Panel
+                <custom-node-gen></custom-node-gen>
             </pane>
         </splitpanes>
     </div>
@@ -28,7 +28,8 @@
 <script>
 import NodeEditor from '@/components/NodeEditor.vue';
 import { Splitpanes, Pane } from 'splitpanes'
-import AllNodes from '~/components/AllNodes.vue';
+import NodeTreeview from '@/components/NodeTreeview.vue';
+import CustomNodeGen from '@/components/CustomNodeGen.vue';
 
 export default {
     name: "DefaultLayout",
@@ -44,7 +45,8 @@ export default {
         NodeEditor,
         Splitpanes,
         Pane,
-        AllNodes,
+        NodeTreeview,
+        CustomNodeGen,
     },
 
 
