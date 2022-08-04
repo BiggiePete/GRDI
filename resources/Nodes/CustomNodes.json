@@ -1,18 +1,1 @@
-[{
-    "name": "rospub",
-    "inputs": [],
-    "outputs": [{
-        "isInput": false,
-        "dataType": "String"
-    }]
-}, {
-    "name": "rossub",
-    "inputs": [{
-        "isInput": true,
-        "dataType": "String"
-    }],
-    "outputs": [{
-        "isInput": false,
-        "dataType": "String"
-    }]
-}]
+[{"name":"rospub","inputs":[],"outputs":[{"isInput":false,"dataType":"String"}]},{"name":"rossub","inputs":[{"isInput":true,"dataType":"String"}],"outputs":[{"isInput":false,"dataType":"String"}]},{"name":"pothole","inputs":[{"isInput":true,"dataType":"Image"},{"isInput":true,"dataType":"Image"}],"outputs":[{"isInput":false,"dataType":"geom.PolygonStamped"}]}]

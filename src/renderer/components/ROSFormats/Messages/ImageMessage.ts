@@ -2,7 +2,7 @@ import Header from "../Header"
 import { colors } from "../ColorSheet";
 export default class ImageMessage {
     static __color = colors[1];
-    static type = "ImageMessage";
+    static type = "Image";
 
     header;
     height;
