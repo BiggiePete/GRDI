@@ -1,8 +1,9 @@
 <template>
     <div class="searchpane">
-        <b-btn @click="refresh" style="cursor:pointer;">
+        <button @click="refresh" style="cursor:pointer; position: absolute;" class="hoverable">
             <v-icon> {{ 'mdi-refresh' }}</v-icon> Refresh Database
-        </b-btn>
+        </button>
+        <hr style="margin-top:25px">
         <v-treeview v-model="tree" :items="items" class="treeview" itemKey="name" open-on-click>
 
             <template v-slot:prepend="{ item, open }">
@@ -59,6 +60,7 @@ export default {
 .searchpane {
     background: #333;
     font-size: 14px !important;
+    overflow-y: scroll;
 }
 
 .theme--light.v-icon {
@@ -73,6 +75,9 @@ export default {
     width: 12px !important;
 }
 
+.hoverable:hover {
+    color: beige;
+}
 
 .nodename:hover {
     color: beige;
