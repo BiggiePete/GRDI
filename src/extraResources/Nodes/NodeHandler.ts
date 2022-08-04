@@ -1,7 +1,32 @@
 
 
-export function NodeHandler(url: string) {
+
+export function ReadCustomNodes() {
+    const fs = require('fs');
+    return JSON.parse(fs.readFileSync("./resources/Nodes/CustomNodes.json"));
+}
+
+
+export function AddCustomNodes(url: string) {
     const fs = require('fs')
+
+    //check to make sure there are no duplucates
+    const CustomNodes = JSON.parse(fs.readFileSync("./resources/Nodes/CustomNodes.json"))
+
+    if (url.includes("\\")) {
+        var fileName = url.slice(url.lastIndexOf("\\") + 1, url.lastIndexOf("."))
+    } else {
+        var fileName = url.slice(url.lastIndexOf("/") + 1, url.lastIndexOf("."))
+    }
+
+    CustomNodes.forEach(cn => {
+        if (fileName == cn.name){
+            console.warn("A node with this Name already exists!")
+            return;
+        }
+    });
+
+    //if none, populate all of the information pertaining to the node
     const file: string = fs.readFileSync(url, { encoding: 'utf8', flag: 'r' })
 
     const publisherRegExp = /rospy.Publisher/gim
@@ -10,11 +35,6 @@ export function NodeHandler(url: string) {
     const Publishers = Array.from(file.matchAll(publisherRegExp))
     const Subscribers = Array.from(file.matchAll(subscriberRegExp))
 
-    if (url.includes("\\")) {
-        var fileName = url.slice(url.lastIndexOf("\\") + 1, url.lastIndexOf("."))
-    } else {
-        var fileName = url.slice(url.lastIndexOf("/") + 1, url.lastIndexOf("."))
-    }
 
     //create the node datatype : 
     var nodeParams = {
@@ -49,12 +69,12 @@ function extractParams(isSubscriber: boolean, index: number | undefined, file: s
 function AppendtoCustomNodes(Node) {
     const fs = require('fs')
     try {
-        var CustomNodes = fs.readFileSync("./resources/CustomNodes.json")
+        var CustomNodes = fs.readFileSync("./resources/Nodes/CustomNodes.json")
         CustomNodes = JSON.parse(CustomNodes)
     } catch (error) {
         console.warn(error)
     }
     CustomNodes.push(Node);
     console.log(CustomNodes)
-    fs.writeFile("./resources/CustomNodes.json", JSON.stringify(CustomNodes), (err) => { console.warn(err); console.log("file written") })
+    fs.writeFile("./resources/Nodes/CustomNodes.json", JSON.stringify(CustomNodes), (err) => { console.warn(err); console.log("file written") })
 }

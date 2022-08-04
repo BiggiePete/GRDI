@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { NodeHandler } from "../../extraResources/Nodes/NodeHandler.ts";
+import { AddCustomNodes } from "../../extraResources/Nodes/NodeHandler.ts";
 export default {
     data() {
         return {
@@ -18,7 +18,7 @@ export default {
     methods: {
         LoadFile(file) {
             if (file != null) {
-                NodeHandler(file.path)
+                AddCustomNodes(file.path)
             }
         }
     }

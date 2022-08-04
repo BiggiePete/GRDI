@@ -1,0 +1,18 @@
+[{
+    "name": "rospub",
+    "inputs": [{}],
+    "outputs": [{
+        "isInput": false,
+        "dataType": "String"
+    }]
+}, {
+    "name": "rossub",
+    "inputs": [{
+        "isInput": true,
+        "dataType": "String"
+    }],
+    "outputs": [{
+        "isInput": false,
+        "dataType": "String"
+    }]
+}]

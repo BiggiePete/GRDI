@@ -22,24 +22,31 @@
 
 <script>
 import { eventBus } from '@/plugins/eventBus'
+import { ReadCustomNodes } from '../../extraResources/Nodes/NodeHandler'
 
 export default {
     data() {
         return {
             tree: [],
-            items: [],
+            items: []
         }
     },
     created() {
+        this.refresh()
     },
     methods: {
         nodeSelected(item) {
             if (!item.children) {
-                eventBus.$emit("NodeRequested", item.name)
+                eventBus.$emit("NodeRequested", item)
             }
         },
         refresh() {
-
+            const customNodes = ReadCustomNodes()
+            this.items = [];
+            console.log(customNodes)
+            customNodes.forEach((cn) => {
+                this.items.push(cn)
+            })
         }
     }
 }

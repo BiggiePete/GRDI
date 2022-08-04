@@ -11,7 +11,7 @@ const fs = require('fs');
 
 import { eventBus } from "~/plugins/eventBus";
 
-import { Editor } from "@baklavajs/core"
+import { Editor, Node } from "@baklavajs/core"
 import { ViewPlugin } from "@baklavajs/plugin-renderer-vue"
 import { Engine } from "@baklavajs/plugin-engine"
 import { InterfaceTypePlugin } from "@baklavajs/plugin-interface-types"
@@ -30,6 +30,7 @@ export default {
         viewPlugin: new ViewPlugin(),
         engine: new Engine(true),
         intfTypePlugin: new InterfaceTypePlugin(),
+        registeredNodes: new Array()
     }),
     created() {
         electron.ipcRenderer.on('FILE_OPEN', (event, args) => {
@@ -51,7 +52,7 @@ export default {
         this.viewPlugin.enableMinimap = true;
 
         //add nodes
-        this.RegisterNodes();
+        //this.RegisterNodes(); //nodes are now registered on the fly
 
         //add colors
         this.RegisterColors();
@@ -61,7 +62,7 @@ export default {
         //then add it to the editor
         //this.editor.addNode(n)
         eventBus.$on("NodeRequested", (data) => {
-            console.log("recieved : " + data)
+            this.JITNodeBuilder(data)
         })
     },
     methods: {
@@ -79,19 +80,58 @@ export default {
         LoadRecent() {
             this.editor.load(JSON.parse(localStorage.getItem("Recent")));
         },
-        RegisterNodes() {
-            // allNodes.nodeArray.forEach((n) => {
-            //     //const _n = new n();
-            //     //this.editor.registerNodeType(_n.type, n, _n.group);
-            //     console.log(n[0])
-            // })
-        },
         RegisterColors() {
             // for every type of ROS message, register it's respective color
             ROSMessages.forEach((m) => {
                 this.intfTypePlugin.addType(m.type, m.__color)
             })
         },
+        JITNodeBuilder(nodeInfo) {
+            console.log(nodeInfo.inputs[0].dataType)
+            class JITNode extends Node {
+                type = nodeInfo.name;
+                name = nodeInfo.name;
+                group = nodeInfo.group ? nodeInfo.group : "";
+
+                constructor() {
+                    super();
+                    if (nodeInfo.inputs[0].dataType != undefined) {
+                        let int = 0;
+
+                        nodeInfo.inputs.forEach((i) => {
+                            this.addInputInterface("in " + i.dataType + "" + int.toString(), undefined, "", { type: i.dataType })
+
+                            int++;
+                        })
+                    }
+                    if (nodeInfo.outputs[0].dataType != undefined) {
+                        let int = 0
+
+                        nodeInfo.outputs.forEach((o) => {
+                            this.addOutputInterface("out " + o.dataType + "" + int.toString(), { type: o.dataType })
+
+                            int++;
+                        })
+                    }
+                }
+            }
+            for (let i = 0; i < this.registeredNodes.length; i++) {
+                const rn = this.registeredNodes[i];
+                if (rn.name == nodeInfo.name) {
+                    this.editor.addNode(new JITNode())
+                    console.log("node added ADDED PREVIOUSLY")
+                    return;
+                }
+            }
+
+
+            this.registeredNodes.push(nodeInfo)
+            this.editor.registerNodeType(nodeInfo.name, JITNode, JITNode.group)
+            console.log("node registered")
+            this.editor.addNode(new JITNode())
+            console.log("node added NOT REGISTERED PREVIOUSLY")
+
+        }
     },
 }
 </script>
