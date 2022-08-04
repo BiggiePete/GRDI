@@ -39,8 +39,8 @@ export function AddCustomNodes(url: string) {
     //create the node datatype : 
     var nodeParams = {
         name: "",
-        inputs: [{}],
-        outputs: [{}],
+        inputs: new Array(),
+        outputs: new Array(),
     }
     nodeParams.name = fileName
     Publishers.forEach(pub => {

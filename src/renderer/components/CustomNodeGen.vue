@@ -9,6 +9,7 @@
 
 <script>
 import { AddCustomNodes } from "../../extraResources/Nodes/NodeHandler.ts";
+import { eventBus } from "~/plugins/eventBus";
 export default {
     data() {
         return {
@@ -19,6 +20,7 @@ export default {
         LoadFile(file) {
             if (file != null) {
                 AddCustomNodes(file.path)
+                eventBus.$emit("NewNodeCreated")
             }
         }
     }

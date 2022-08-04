@@ -20,3 +20,9 @@ future dream :
 roslibjs : incorperate the roslibjs to listen to ROS messages being posted to topics, use this to create a debugger
 Debugger : seperate "Tab" that contains all of the information, this could also be added to the design screen as a tab for the node picker
 
+
+
+
+current bugfixes : 
+
+fix issue with nodes being saved and having nothing in them, this is due to the custom nodes {} being saved with empty data first, fix pls

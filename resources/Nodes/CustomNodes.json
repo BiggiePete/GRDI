@@ -1,6 +1,6 @@
 [{
     "name": "rospub",
-    "inputs": [{}],
+    "inputs": [],
     "outputs": [{
         "isInput": false,
         "dataType": "String"

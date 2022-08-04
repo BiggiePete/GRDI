@@ -87,7 +87,7 @@ export default {
             })
         },
         JITNodeBuilder(nodeInfo) {
-            console.log(nodeInfo.inputs[0].dataType)
+            console.log(nodeInfo)
             class JITNode extends Node {
                 type = nodeInfo.name;
                 name = nodeInfo.name;
@@ -95,7 +95,7 @@ export default {
 
                 constructor() {
                     super();
-                    if (nodeInfo.inputs[0].dataType != undefined) {
+                    if (nodeInfo.inputs.length < 1 || nodeInfo.inputs[0].dataType != undefined) {
                         let int = 0;
 
                         nodeInfo.inputs.forEach((i) => {
@@ -104,7 +104,7 @@ export default {
                             int++;
                         })
                     }
-                    if (nodeInfo.outputs[0].dataType != undefined) {
+                    if (nodeInfo.outputs.length < 1 || nodeInfo.outputs[0].dataType != undefined) {
                         let int = 0
 
                         nodeInfo.outputs.forEach((o) => {

@@ -47,7 +47,9 @@
         "@fortawesome/vue-fontawesome": "^2.0.8",
         "baklavajs": "^1.10.1",
         "fs-readdir-recursive": "^1.1.0",
+        "node-pty": "^0.10.1",
         "sass-loader": "10",
-        "splitpanes": "^2.4.1"
+        "splitpanes": "^2.4.1",
+        "xterm": "^4.19.0"
     }
 }

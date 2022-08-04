@@ -1,8 +1,8 @@
 <template>
     <div class="searchpane">
-        <v-slot @click="refresh" style="cursor:pointer;">
+        <b-btn @click="refresh" style="cursor:pointer;">
             <v-icon> {{ 'mdi-refresh' }}</v-icon> Refresh Database
-        </v-slot>
+        </b-btn>
         <v-treeview v-model="tree" :items="items" class="treeview" itemKey="name" open-on-click>
 
             <template v-slot:prepend="{ item, open }">
@@ -33,6 +33,9 @@ export default {
     },
     created() {
         this.refresh()
+        eventBus.$on("NewNodeCreated", (e) => {
+            this.refresh()
+        })
     },
     methods: {
         nodeSelected(item) {

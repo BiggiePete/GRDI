@@ -14,12 +14,12 @@
                         <node-editor id="editor" class="fullscreen"></node-editor>
                     </pane>
                     <pane id="BottomPanel">
-                        Bottom Panel
+                        <terminal></terminal>
                     </pane>
                 </splitpanes>
             </pane>
             <pane id="RightPanel" size="20">
-                <custom-node-gen></custom-node-gen>
+                <custom-node-gen class="fullscreen"></custom-node-gen>
             </pane>
         </splitpanes>
     </div>
@@ -30,6 +30,7 @@ import NodeEditor from '@/components/NodeEditor.vue';
 import { Splitpanes, Pane } from 'splitpanes'
 import NodeTreeview from '@/components/NodeTreeview.vue';
 import CustomNodeGen from '@/components/CustomNodeGen.vue';
+import Terminal from '@/components/Terminal.vue'
 
 export default {
     name: "DefaultLayout",
@@ -47,6 +48,7 @@ export default {
         Pane,
         NodeTreeview,
         CustomNodeGen,
+        Terminal
     },
 
 
