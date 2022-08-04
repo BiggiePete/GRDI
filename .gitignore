@@ -4,16 +4,3 @@ build/*
 !build/icons
 node_modules/*
 .editorconfig
-!node_modules/
-node_modules/*
-!node_modules/@baklavajs/
-node_modules/@baklavajs/*
-!node_modules/@baklavajs/core/
-node_modules/@baklavajs/core/*
-!node_modules/@baklavajs/core/dist/
-node_modules/@baklavajs/core/dist/*
-!node_modules/@baklavajs/core/dist/baklavajs-core/
-node_modules/@baklavajs/core/dist/baklavajs-core/*
-!node_modules/@baklavajs/core/dist/baklavajs-core/src/
-node_modules/@baklavajs/core/dist/baklavajs-core/src/*
-!node_modules/@baklavajs/core/dist/baklavajs-core/src/node.d.ts
