@@ -19,12 +19,14 @@ thanks to the simplicity of web development, the application can be run with the
 
 #### Using Ubuntu
 
+below is the install commands to get node v16
+
 ```bash
 curl -fsSL <https://deb.nodesource.com/setup_16.x> | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 
-### INSTALL
+### Install
 
 ```bash
 #Clone the Repo
@@ -39,4 +41,20 @@ yarn install
 yarn dev
 ```
 
-Once the server is Running, go into your browser and go to localhost:3000
+A window will appear, and the application will be running!
+
+## Build from Source
+
+follow the install and run instructions from above, but instead of
+
+```bash
+yarn dev
+```
+
+use
+
+```bash
+yarn Build
+```
+
+The final built app will be in the /build directory where you can use the setup to install as an application
