@@ -39,21 +39,4 @@ yarn install
 yarn dev
 ```
 
-### WARNING
-
-once you finish installing, yarn install would have removed a edit to baklavajs! if you are using vscode, simply undo this change, otherwise check this file
-
-node_modules/@baklavajs/core/dist/baklavajs-core/src/node.d.ts
-
-and make sure there is the following code : 
-
-```js
-/** Type of the node */
-abstract type: string;
-/** Customizable display name of the node. */
-abstract name: string;
-/** Customizable group name of the node. */
-abstract group: string; // <--- this is the part that gets removed
-```
-
 Once the server is Running, go into your browser and go to localhost:3000
