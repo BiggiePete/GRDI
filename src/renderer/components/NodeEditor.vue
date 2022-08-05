@@ -21,6 +21,7 @@ import { OptionPlugin } from "@baklavajs/plugin-options-vue"
 import { SaveJSON } from "@/static/Scripts/SaveJson";
 import { nodeNameColorDict } from "./ROSFormats/Messages/AllMessagesAllColors";
 import { customNodesDir, ReadCustomNodes } from '@/../extraResources/Nodes/NodeHandler';
+import { compressSync, uncompressSync } from "snappy";
 
 
 export default {
@@ -72,11 +73,13 @@ export default {
             let data = this.editor.save();
 
             data.custom = ReadCustomNodes();
-            localStorage.setItem("Recent", JSON.stringify(data));
-            SaveJSON('Project.grdi', JSON.stringify(data))
+            const cData = compressSync(JSON.stringify(data))
+            localStorage.setItem("Recent", cData);
+            SaveJSON('Project.grdi', cData)
         },
         LoadProject(event) {
-            const data = JSON.parse(fs.readFileSync(event[0]))
+
+            const data = JSON.parse(uncompressSync(fs.readFileSync(event[0])))
             //data.custom needs to be sent off and have all of the nodes registered
             fs.writeFileSync(customNodesDir, JSON.stringify(data.custom))
             data.custom.forEach((cN) => {
@@ -89,7 +92,7 @@ export default {
             getCurrentWindow().reload();
         },
         LoadRecent() {
-            const data = JSON.parse(localStorage.getItem("Recent"));
+            const data = JSON.parse(uncompressSync(localStorage.getItem("Recent")));
 
             fs.writeFileSync(customNodesDir, JSON.stringify(data.custom))
             data.custom.forEach((cN) => {

@@ -1,5 +1,5 @@
 
-
+import snappy, { compressSync } from "snappy"
 export const customNodesDir = "./resources/Nodes/CustomNodes.json"
 export function ReadCustomNodes() {
     const fs = require('fs');
@@ -41,6 +41,7 @@ export function AddCustomNodes(url: string) {
         name: "",
         inputs: new Array(),
         outputs: new Array(),
+        CompressedPython: Compress(file)
     }
     nodeParams.name = fileName
     Publishers.forEach(pub => {
@@ -79,4 +80,11 @@ function AppendtoCustomNodes(Node) {
     CustomNodes.push(Node);
     console.log(CustomNodes)
     fs.writeFile(customNodesDir, JSON.stringify(CustomNodes), (err) => { console.warn(err); console.log("file written") })
+}
+
+export function Compress(file) {
+    return snappy.compressSync(file)
+}
+export function Uncompress(data) {
+    return snappy.uncompressSync(data)
 }
