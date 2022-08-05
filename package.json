@@ -1,6 +1,6 @@
 {
     "name": "grdi",
-    "version": "1.2.13",
+    "version": "1.2.15",
     "description": "An electron-nuxt project",
     "main": "./dist/main/index.js",
     "scripts": {
@@ -19,6 +19,14 @@
     },
     "resolutions": {
         "@types/node": "14.14.9"
+    },
+    "build": {
+        "fileAssociations": [{
+            "ext": "grdi",
+            "name": "GRDI Save File",
+            "role": "Editor",
+            "perMachine": true
+        }]
     },
     "devDependencies": {
         "@fortawesome/fontawesome-free": "5.15.3",

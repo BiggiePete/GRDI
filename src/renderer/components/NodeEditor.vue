@@ -23,6 +23,7 @@ import { nodeNameColorDict } from "./ROSFormats/Messages/AllMessagesAllColors";
 import { customNodesDir, ReadCustomNodes } from '@/../extraResources/Nodes/NodeHandler';
 import { compressSync, uncompressSync } from "snappy";
 
+import { argv } from "process";
 
 export default {
     props: {
@@ -35,6 +36,7 @@ export default {
         registeredNodes: new Array()
     }),
     created() {
+        console.log(argv)
         electron.ipcRenderer.on('FILE_OPEN', (event, args) => {
             this.LoadProject(args);
         })

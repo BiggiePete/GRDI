@@ -82,9 +82,10 @@ function AppendtoCustomNodes(Node) {
     fs.writeFile(customNodesDir, JSON.stringify(CustomNodes), (err) => { console.warn(err); console.log("file written") })
 }
 
-export function Compress(file) {
+function Compress(file) {
     return snappy.compressSync(file)
 }
-export function Uncompress(data) {
-    return snappy.uncompressSync(data)
+
+function UncompressExtract(data) {
+    const d = snappy.uncompressSync(data)
 }
