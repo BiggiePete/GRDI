@@ -8897,6 +8897,11 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
+snappyjs@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/snappyjs/-/snappyjs-0.7.0.tgz#6096eac06382700ae7fdefa579dea5e2aa20f51c"
+  integrity sha512-u5iEEXkMe2EInQio6Wv9LWHOQYRDbD2O9hzS27GpT/lwfIQhTCnHCTqedqHIHe9ZcvQo+9au6vngQayipz1NYw==
+
 socks-proxy-agent@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/socks-proxy-agent/-/socks-proxy-agent-7.0.0.tgz#dc069ecf34436621acb41e3efa66ca1b5fed15b6"

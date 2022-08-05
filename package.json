@@ -1,6 +1,6 @@
 {
     "name": "grdi",
-    "version": "1.1.5",
+    "version": "1.1.10",
     "description": "An electron-nuxt project",
     "main": "./dist/main/index.js",
     "scripts": {
@@ -31,14 +31,14 @@
         "cross-env": "^7.0.3",
         "deepmerge": "^4.2.2",
         "electron": "^16.0.5",
+        "electron-builder": "^23.3.3",
         "electron-devtools-installer": "^3.2.0",
+        "electron-rebuild": "^3.2.9",
         "nuxt": "^2.15.8",
         "roboto-fontface": "^0.10.0",
         "vuetify": "^2.5.10",
         "webpack": "^4.46.0",
-        "webpack-node-externals": "^3.0.0",
-        "electron-rebuild": "^3.2.9",
-        "electron-builder": "^23.3.3"
+        "webpack-node-externals": "^3.0.0"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^6.1.2",
@@ -49,6 +49,7 @@
         "baklavajs": "^1.10.1",
         "fs-readdir-recursive": "^1.1.0",
         "sass-loader": "10",
+        "snappyjs": "^0.7.0",
         "splitpanes": "^2.4.1",
         "xterm": "^4.19.0",
         "xterm-addon-fit": "^0.5.0"

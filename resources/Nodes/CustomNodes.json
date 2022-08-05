@@ -1,1 +1,1 @@
-[{"name":"polygon","inputs":[],"outputs":[{"dataType":"PolygonStamped"}]}]
+[{"name":"polygon","inputs":[],"outputs":[{"dataType":"PolygonStamped"}]},{"name":"rospub","inputs":[],"outputs":[{"dataType":"String"}]},{"name":"rossub","inputs":[{"dataType":"String"}],"outputs":[{"dataType":"String"}]},{"name":"pothole","inputs":[{"dataType":"Image"},{"dataType":"Image"}],"outputs":[{"dataType":"PolygonStamped"}]}]
