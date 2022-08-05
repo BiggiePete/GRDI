@@ -1,9 +1,9 @@
-import { colors } from "../ColorSheet";
+import { colors1 } from "../ColorSheet";
 import Header from "../Header";
 
 export default class IlluminanceMessage {
-    static __color = colors[10];
-    static type = "IlluminanceMessage"
+    static __color = colors1[10];
+    static type = "Illuminance"
 
     header;
     illuminance;

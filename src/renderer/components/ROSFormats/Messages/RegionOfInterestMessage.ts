@@ -1,7 +1,7 @@
-import { colors } from "../ColorSheet";
+import { colors1 } from "../ColorSheet";
 export default class RegionOfInterestMessage {
-    static __color = colors[2];
-    static type = "RegionOfInterestMessage"
+    static __color = colors1[2];
+    static type = "RegionOfInterest"
 
     x_offset;
     y_offset;

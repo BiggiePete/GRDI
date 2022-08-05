@@ -1,10 +1,10 @@
 import Header from "../Header";
 import RegionOfInterestMessage from "./RegionOfInterestMessage";
-import { colors } from "../ColorSheet";
+import { colors1 } from "../ColorSheet";
 
 export default class CameraInfoMessage {
-    static __color = colors[3];
-    static type = "CameraInfoMessage";
+    static __color = colors1[3];
+    static type = "CameraInfo";
 
     header;
     height;

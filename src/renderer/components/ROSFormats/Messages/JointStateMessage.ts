@@ -1,7 +1,7 @@
-import { colors } from "../ColorSheet";
+import { colors1 } from "../ColorSheet";
 export default class JointStateMessage {
-    static __color = colors[8]
-    static type = "JointStateMessage"
+    static __color = colors1[8]
+    static type = "JointState"
 
 
     name;

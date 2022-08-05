@@ -1,9 +1,9 @@
-import { colors } from "../ColorSheet";
+import { colors1 } from "../ColorSheet";
 import Header from "../Header";
 
 export default class JoyMessage {
-    static __color = colors[9];
-    static type = "JoyMessage"
+    static __color = colors1[9];
+    static type = "Joy"
 
     header;
     axes;

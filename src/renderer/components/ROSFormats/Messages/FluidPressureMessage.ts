@@ -1,9 +1,9 @@
-import { colors } from "../ColorSheet";
+import { colors1 } from "../ColorSheet";
 import Header from "../Header";
 
 export default class FluidPressureMessage {
-    static __color = colors[6];
-    static type = "FluidPressureMessage"
+    static __color = colors1[6];
+    static type = "FluidPressure"
     
     header;
     fluid_pressure;

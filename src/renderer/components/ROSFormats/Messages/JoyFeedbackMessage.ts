@@ -1,8 +1,8 @@
-import { colors } from "../ColorSheet";
+import { colors1 } from "../ColorSheet";
 
 export default class JoyFeedbackMessage {
-    static __color = colors[11];
-    static type = "JoyFeedbackMessage"
+    static __color = colors1[11];
+    static type = "JoyFeedback"
 
     static TYPE_LED = 0
     static TYPE_RUMBLE = 1

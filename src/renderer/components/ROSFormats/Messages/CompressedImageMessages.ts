@@ -1,9 +1,9 @@
-import { colors } from "../ColorSheet";
+import { colors1 } from "../ColorSheet";
 import Header from "../Header";
 
 export default class CompressedImageMessage {
-    static __color = colors[5];
-    static type = "CompressedImageMessage"
+    static __color = colors1[5];
+    static type = "CompressedImage"
 
 
     header;

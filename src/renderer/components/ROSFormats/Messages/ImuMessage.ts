@@ -1,11 +1,11 @@
-import { colors } from "../ColorSheet";
+import { colors1 } from "../ColorSheet";
 import Header from "../Header";
 import Quaternion from "../Quaternion";
 import Vector3 from "../Vector3";
 
 export default class ImuMessage {
-    static __color = colors[7];
-    static type = "ImuMessage"
+    static __color = colors1[7];
+    static type = "Imu"
 
     header;
     orientation;

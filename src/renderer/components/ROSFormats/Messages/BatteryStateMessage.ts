@@ -1,8 +1,8 @@
 import Header from "../Header";
-import { colors } from "../ColorSheet";
+import { colors1 } from "../ColorSheet";
 export default class BatteryStateMessage {
-    static __color = colors[0];
-    static type = "BatteryStateMessage"
+    static __color = colors1[0];
+    static type = "BatteryState"
 
     static POWER_SUPPLY_STATUS_UNKNOWN = 0
     static POWER_SUPPLY_STATUS_CHARGING = 1
