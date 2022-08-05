@@ -18,8 +18,9 @@ import { InterfaceTypePlugin } from "@baklavajs/plugin-interface-types"
 import { OptionPlugin } from "@baklavajs/plugin-options-vue"
 
 
-import { ROSMessages } from "@/components/ROSFormats/ROSMessages_All.ts"
 import { SaveJSON } from "@/static/Scripts/SaveJson";
+import { nodeNameColorDict } from "./ROSFormats/Messages/AllMessagesAllColors";
+import { customNodesDir, ReadCustomNodes } from '@/../extraResources/Nodes/NodeHandler';
 
 
 export default {
@@ -62,32 +63,48 @@ export default {
         //then add it to the editor
         //this.editor.addNode(n)
         eventBus.$on("NodeRequested", (data) => {
-            this.JITNodeBuilder(data)
+            this.JITNodeBuilder(data, true)
         })
     },
     methods: {
         SaveProject() {
+            //needs to be re-factored to save custom nodes to file
             let data = this.editor.save();
+
+            data.custom = ReadCustomNodes();
             localStorage.setItem("Recent", JSON.stringify(data));
             SaveJSON('Project.grdi', JSON.stringify(data))
         },
         LoadProject(event) {
-            this.editor.load(JSON.parse(fs.readFileSync(event[0])))
+            const data = JSON.parse(fs.readFileSync(event[0]))
+            //data.custom needs to be sent off and have all of the nodes registered
+            fs.writeFileSync(customNodesDir, JSON.stringify(data.custom))
+            data.custom.forEach((cN) => {
+                this.JITNodeBuilder(cN, false);
+            })
+
+            this.editor.load(data)
         },
         NewProject() {
             getCurrentWindow().reload();
         },
         LoadRecent() {
-            this.editor.load(JSON.parse(localStorage.getItem("Recent")));
+            const data = JSON.parse(localStorage.getItem("Recent"));
+
+            fs.writeFileSync(customNodesDir, JSON.stringify(data.custom))
+            data.custom.forEach((cN) => {
+                this.JITNodeBuilder(cN, false);
+            })
+
+            this.editor.load(data)
         },
         RegisterColors() {
             // for every type of ROS message, register it's respective color
-            ROSMessages.forEach((m) => {
-                this.intfTypePlugin.addType(m.type, m.__color)
+            nodeNameColorDict().forEach((nN) => {
+                this.intfTypePlugin.addType(nN.name, nN.color)
             })
         },
-        JITNodeBuilder(nodeInfo) {
-            console.log(nodeInfo)
+        JITNodeBuilder(nodeInfo, display) {
             class JITNode extends Node {
                 type = nodeInfo.name;
                 name = nodeInfo.name;
@@ -117,7 +134,7 @@ export default {
             }
             for (let i = 0; i < this.registeredNodes.length; i++) {
                 const rn = this.registeredNodes[i];
-                if (rn.name == nodeInfo.name) {
+                if (rn.name == nodeInfo.name && display) {
                     this.editor.addNode(new JITNode())
                     console.log("node added ADDED PREVIOUSLY")
                     return;
@@ -128,7 +145,9 @@ export default {
             this.registeredNodes.push(nodeInfo)
             this.editor.registerNodeType(nodeInfo.name, JITNode, JITNode.group)
             console.log("node registered")
-            this.editor.addNode(new JITNode())
+            if (display) {
+                this.editor.addNode(new JITNode())
+            }
             console.log("node added NOT REGISTERED PREVIOUSLY")
 
         }

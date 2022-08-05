@@ -1,9 +1,9 @@
 
 
-
+export const customNodesDir = "./resources/Nodes/CustomNodes.json"
 export function ReadCustomNodes() {
     const fs = require('fs');
-    return JSON.parse(fs.readFileSync("./resources/Nodes/CustomNodes.json"));
+    return JSON.parse(fs.readFileSync(customNodesDir));
 }
 
 
@@ -11,7 +11,7 @@ export function AddCustomNodes(url: string) {
     const fs = require('fs')
 
     //check to make sure there are no duplucates
-    const CustomNodes = JSON.parse(fs.readFileSync("./resources/Nodes/CustomNodes.json"))
+    const CustomNodes = JSON.parse(fs.readFileSync(customNodesDir))
 
     if (url.includes("\\")) {
         var fileName = url.slice(url.lastIndexOf("\\") + 1, url.lastIndexOf("."))
@@ -20,7 +20,7 @@ export function AddCustomNodes(url: string) {
     }
 
     CustomNodes.forEach(cn => {
-        if (fileName == cn.name){
+        if (fileName == cn.name) {
             console.warn("A node with this Name already exists!")
             return;
         }
@@ -44,24 +44,26 @@ export function AddCustomNodes(url: string) {
     }
     nodeParams.name = fileName
     Publishers.forEach(pub => {
-        nodeParams.outputs.push(extractParams(false, pub.index, file))
+        nodeParams.outputs.push(extractParams(pub.index, file))
     });
     Subscribers.forEach(sub => {
-        nodeParams.inputs.push(extractParams(true, sub.index, file))
+        nodeParams.inputs.push(extractParams(sub.index, file))
     });
     AppendtoCustomNodes(nodeParams)
 }
 
-function extractParams(isSubscriber: boolean, index: number | undefined, file: string) {
+function extractParams(index: number | undefined, file: string) {
     if (index == undefined) {
         return {};
     }
     var params = {
-        isInput: isSubscriber,
         dataType: "",
     };
-    params.isInput = isSubscriber;
     params.dataType = file.slice(file.indexOf(",", index) + 2, file.indexOf(",", file.indexOf(",", index) + 1))
+
+    if (params.dataType.includes(".")) {
+        params.dataType = params.dataType.slice(params.dataType.lastIndexOf(".") + 1, params.dataType.length)
+    }
 
     return params
 }
@@ -69,12 +71,12 @@ function extractParams(isSubscriber: boolean, index: number | undefined, file: s
 function AppendtoCustomNodes(Node) {
     const fs = require('fs')
     try {
-        var CustomNodes = fs.readFileSync("./resources/Nodes/CustomNodes.json")
+        var CustomNodes = fs.readFileSync(customNodesDir)
         CustomNodes = JSON.parse(CustomNodes)
     } catch (error) {
         console.warn(error)
     }
     CustomNodes.push(Node);
     console.log(CustomNodes)
-    fs.writeFile("./resources/Nodes/CustomNodes.json", JSON.stringify(CustomNodes), (err) => { console.warn(err); console.log("file written") })
+    fs.writeFile(customNodesDir, JSON.stringify(CustomNodes), (err) => { console.warn(err); console.log("file written") })
 }
