@@ -2,6 +2,7 @@
 dist
 build/*
 !build/icons
+!build/icons/my_extention
 node_modules/*
 .editorconfig
 resources/Nodes/CustomNodes.json
