@@ -2,8 +2,9 @@
 dist
 build/*
 !build/icons
-!build/icons/my_extention
+!build/icons/my_extention.ico
 node_modules/*
 .editorconfig
 resources/Nodes/CustomNodes.json
 TODO
+!**.ico
