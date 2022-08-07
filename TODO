@@ -17,5 +17,10 @@ future dream :
 roslibjs : incorperate the roslibjs to listen to ROS messages being posted to topics, use this to create a debugger
 Debugger : seperate "Tab" that contains all of the information, this could also be added to the design screen as a tab for the node picker
 
+
 current goal for whenever :
-use snappy to compress files being uploaded into GRDI, then with those compressed files, attach them to the custom nodes object, so that they can be re-constructed when the time comes
+use snappy to re-construct python files on click (this will be usefull later)
+allow users to create custom message types, and those message types need to have their own colors (user selectable)
+settings, allow users to change the color palette for the node connections
+tabs, create the DESIGN CREATE TEST tabs, where the dev can switch between the screens
+treeview needs folders allow users to add nodes to certain folders

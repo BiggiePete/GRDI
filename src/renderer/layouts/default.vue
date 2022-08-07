@@ -1,27 +1,38 @@
 <template>
     <div class="screen">
-        <link rel="stylesheet" href="/Styles/splitpanes.css">
-        <splitpanes class="default-theme" :push-other-panes="false">
-            <pane id="LeftPanel" size="20">
-                <node-treeview class="fullscreen"></node-treeview>
-            </pane>
-            <pane>
-                <splitpanes :push-other-panes="false" horizontal>
-                    <pane id="TopPanel" max-size="8">
-                        Top Panel
+        <vue-tabs centered>
+            <v-tab title="Design">
+                <link rel="stylesheet" href="/Styles/splitpanes.css">
+                <splitpanes class="default-theme" :push-other-panes="false">
+                    <pane id="LeftPanel" size="20">
+                        <node-treeview class="fullscreen"></node-treeview>
                     </pane>
-                    <pane id="EditorPanel" size="82">
-                        <node-editor id="editor" class="fullscreen"></node-editor>
+                    <pane>
+                        <splitpanes :push-other-panes="false" horizontal>
+                            <pane id="TopPanel" max-size="8">
+                                Top Panel
+                            </pane>
+                            <pane id="EditorPanel" size="82">
+                                <node-editor id="editor" class="fullscreen"></node-editor>
+                            </pane>
+                            <pane id="BottomPanel">
+                                <terminal></terminal>
+                            </pane>
+                        </splitpanes>
                     </pane>
-                    <pane id="BottomPanel">
-                        <terminal></terminal>
+                    <pane id="RightPanel" size="20">
+                        <custom-node-gen class="fullscreen"></custom-node-gen>
                     </pane>
                 </splitpanes>
-            </pane>
-            <pane id="RightPanel" size="20">
-                <custom-node-gen class="fullscreen"></custom-node-gen>
-            </pane>
-        </splitpanes>
+            </v-tab>
+            <v-tab title="Create">
+                <p>This portion (Create) of GRDI is still under development!</p>
+            </v-tab>
+
+            <v-tab title="Test">
+                <p>This portion (Test) of GRDI is still under development!</p>
+            </v-tab>
+        </vue-tabs>
     </div>
 </template>
 
@@ -56,6 +67,20 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../../node_modules/vue-nav-tabs/themes/vue-tabs.css';
+
+.tab-content {
+    height: 100% !important;
+}
+
+.vue-tabs {
+    height: 100% !important;
+}
+
+.tab-container {
+    height: 100% !important;
+}
+
 body {
     margin: 0 !important;
 }

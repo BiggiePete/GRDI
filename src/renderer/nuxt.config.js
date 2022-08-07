@@ -33,7 +33,12 @@ module.exports = {
             src: "@/plugins/eventBus.js",
             mode: "client",
             ssr: false
-        }
+        },
+        {
+            src: "@/plugins/vueNavTabs.js",
+            mode: "client",
+            ssr: false
+        },
     ],
     buildModules: [
         '@nuxt/typescript-build',
@@ -65,5 +70,5 @@ module.exports = {
             ]
         }
     },
-    
+
 };

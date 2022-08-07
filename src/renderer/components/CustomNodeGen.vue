@@ -3,7 +3,12 @@
         <h1 class="title">
             Custom Node Builder
         </h1>
-        <v-file-input accept=".py" label="Input ROS python File" color="white" @change="LoadFile"></v-file-input>
+        <v-file-input accept=".py" label="Input ROS python File" color="white" @change="LoadFile"
+        counter
+        show-size
+        dense
+        dark
+        ></v-file-input>
     </div>
 </template>
 

@@ -4,7 +4,7 @@
             <v-icon> {{ 'mdi-refresh' }}</v-icon> Refresh Database
         </button>
         <hr style="margin-top:25px">
-        <v-treeview v-model="tree" :items="items" class="treeview" itemKey="name" open-on-click>
+        <v-treeview v-model="tree" :items="items" class="treeview" itemKey="name" open-on-click dark dense>
 
             <template v-slot:prepend="{ item, open }">
                 <v-icon v-if="item.children">

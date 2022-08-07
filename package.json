@@ -21,12 +21,14 @@
         "@types/node": "14.14.9"
     },
     "build": {
-        "fileAssociations": [{
-            "ext": "grdi",
-            "name": "GRDI Save File",
-            "role": "Editor",
-            "perMachine": true
-        }]
+        "fileAssociations": [
+            {
+                "ext": "grdi",
+                "name": "GRDI Save File",
+                "role": "Editor",
+                "perMachine": true
+            }
+        ]
     },
     "devDependencies": {
         "@fortawesome/fontawesome-free": "5.15.3",
@@ -53,11 +55,16 @@
         "@fortawesome/free-regular-svg-icons": "^6.1.2",
         "@fortawesome/free-solid-svg-icons": "^6.1.2",
         "@fortawesome/vue-fontawesome": "^2.0.8",
+        "@types/three": "^0.143.0",
+        "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
+        "babel-helper-vue-jsx-merge-props": "^2.0.3",
         "baklavajs": "^1.10.1",
         "fs-readdir-recursive": "^1.1.0",
         "sass-loader": "10",
         "snappy": "^7.1.1",
         "splitpanes": "^2.4.1",
+        "three": "^0.143.0",
+        "vue-nav-tabs": "^0.5.7",
         "xterm": "^4.19.0",
         "xterm-addon-fit": "^0.5.0"
     }

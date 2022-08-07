@@ -1,5 +1,5 @@
 
-import snappy, { compressSync } from "snappy"
+import snappy from "snappy"
 export const customNodesDir = "./resources/Nodes/CustomNodes.json"
 export function ReadCustomNodes() {
     const fs = require('fs');
