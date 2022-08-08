@@ -26,7 +26,14 @@
                 </splitpanes>
             </v-tab>
             <v-tab title="Create">
-                <p>This portion (Create) of GRDI is still under development!</p>
+                <splitpanes class="default-theme" :push-other-panes="false">
+                    <pane size="30">
+                        <p>This portion (Create) of GRDI is still under development!</p>
+                    </pane>
+                    <pane>
+                        <u-r-d-f-builder></u-r-d-f-builder>
+                    </pane>
+                </splitpanes>
             </v-tab>
 
             <v-tab title="Test">
@@ -42,6 +49,7 @@ import { Splitpanes, Pane } from 'splitpanes'
 import NodeTreeview from '@/components/NodeTreeview.vue';
 import CustomNodeGen from '@/components/CustomNodeGen.vue';
 import Terminal from '@/components/Terminal.vue'
+import URDFBuilder from '~/components/URDFBuilder.vue';
 
 export default {
     name: "DefaultLayout",
@@ -59,7 +67,8 @@ export default {
         Pane,
         NodeTreeview,
         CustomNodeGen,
-        Terminal
+        Terminal,
+        URDFBuilder
     },
 
 
