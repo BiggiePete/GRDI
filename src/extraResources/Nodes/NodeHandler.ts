@@ -3,11 +3,37 @@ import snappy from "snappy"
 export const customNodesDir = "./resources/Nodes/CustomNodes.json"
 export function ReadCustomNodes() {
     const fs = require('fs');
-    return JSON.parse(fs.readFileSync(customNodesDir));
+    const data = JSON.parse(fs.readFileSync(customNodesDir))
+    CreateNodeTree(data);
+    return data
+
+    //this needs to construct an object that contains every node and it's children, a node with no children is a node, and a node with children is a folder
 }
 
+function CreateNodeTree(CustomNodes) {
+    var folders = new Array();
+    CustomNodes.forEach(cN => { // add every folder
+        folders.push(cN.group)
+    });
 
-export function AddCustomNodes(url: string) {
+
+    folders.forEach(folder => {
+
+    });
+}
+
+const Example = [{
+    name: "Tests",
+    children: [{
+        name: "rospub"
+    },
+    {
+        name: "rossub"
+    }]
+}]
+
+
+export function AddCustomNodes(url: string, group: string) {
     const fs = require('fs')
 
     //check to make sure there are no duplucates
@@ -39,6 +65,7 @@ export function AddCustomNodes(url: string) {
     //create the node datatype : 
     var nodeParams = {
         name: "",
+        group: group,
         inputs: new Array(),
         outputs: new Array(),
         CompressedPython: Compress(file)

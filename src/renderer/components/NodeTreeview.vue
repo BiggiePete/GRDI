@@ -1,9 +1,12 @@
 <template>
     <div class="searchpane">
-        <button @click="refresh" style="cursor:pointer; position: absolute;" class="hoverable">
+        <div data-app>
+            <CustomNodeInputDialog></CustomNodeInputDialog>
+        </div>
+        <v-btn dark dense @click="refresh" style="cursor:pointer;" class="hoverable">
             <v-icon> {{ 'mdi-refresh' }}</v-icon> Refresh Database
-        </button>
-        <hr style="margin-top:25px">
+        </v-btn>
+        <hr />
         <v-treeview v-model="tree" :items="items" class="treeview" itemKey="name" open-on-click dark dense>
 
             <template v-slot:prepend="{ item, open }">
@@ -24,35 +27,37 @@
 <script>
 import { eventBus } from '@/plugins/eventBus'
 import { ReadCustomNodes } from '../../extraResources/Nodes/NodeHandler'
+import CustomNodeInputDialog from './CustomNodeInputDialog.vue'
 
 export default {
     data() {
         return {
             tree: [],
             items: []
-        }
+        };
     },
     created() {
-        this.refresh()
+        this.refresh();
         eventBus.$on("NewNodeCreated", (e) => {
-            this.refresh()
-        })
+            this.refresh();
+        });
     },
     methods: {
         nodeSelected(item) {
             if (!item.children) {
-                eventBus.$emit("NodeRequested", item)
+                eventBus.$emit("NodeRequested", item);
             }
         },
         refresh() {
-            const customNodes = ReadCustomNodes()
+            const customNodes = ReadCustomNodes();
             this.items = [];
-            console.log(customNodes)
+            console.log(customNodes);
             customNodes.forEach((cn) => {
-                this.items.push(cn)
-            })
+                this.items.push(cn);
+            });
         }
-    }
+    },
+    components: { CustomNodeInputDialog }
 }
 </script>
 
@@ -73,6 +78,10 @@ export default {
 
 .v-treeview-node__level {
     width: 12px !important;
+}
+
+.hoverable {
+    max-width: fit-content;
 }
 
 .hoverable:hover {

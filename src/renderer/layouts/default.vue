@@ -20,9 +20,9 @@
                             </pane>
                         </splitpanes>
                     </pane>
-                    <pane id="RightPanel" size="20">
+                    <!--pane id="RightPanel" size="20">
                         <custom-node-gen class="fullscreen"></custom-node-gen>
-                    </pane>
+                    </pane-->
                 </splitpanes>
             </v-tab>
             <v-tab title="Create">
@@ -47,7 +47,6 @@
 import NodeEditor from '@/components/NodeEditor.vue';
 import { Splitpanes, Pane } from 'splitpanes'
 import NodeTreeview from '@/components/NodeTreeview.vue';
-import CustomNodeGen from '@/components/CustomNodeGen.vue';
 import Terminal from '@/components/Terminal.vue'
 import URDFBuilder from '~/components/URDFBuilder.vue';
 
@@ -66,7 +65,6 @@ export default {
         Splitpanes,
         Pane,
         NodeTreeview,
-        CustomNodeGen,
         Terminal,
         URDFBuilder
     },
@@ -90,13 +88,18 @@ export default {
     height: 100% !important;
 }
 
+.title {
+    font-size: 16px;
+    text-align: center;
+}
+
 body {
     margin: 0 !important;
 }
 
 .screen {
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 44.84px);
 }
 
 .center {
