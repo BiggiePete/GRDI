@@ -41,12 +41,12 @@ export default {
         return {
             dialog: false,
             file,
-            group,
+            group:"",
         }
     },
     methods: {
         Submit() {
-            if (this.file != null) {
+            if (this.file != null || this.file != "") {
                 AddCustomNodes(this.file.path, this.group);
                 eventBus.$emit("NewNodeCreated");
                 //clear inputs
