@@ -38,6 +38,7 @@ export default {
         this.camera.position.z = 5
         this.scene.background = new THREE.Color('rgb(17,17,17)')
         this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+        this.controls.addEventListener("change", () => { this.animate() })
         window.addEventListener('resize', this.onWindowResize, false)
     },
     mounted: function () {
@@ -46,7 +47,6 @@ export default {
     },
     methods: {
         animate: function () {
-            requestAnimationFrame(this.animate)
             this.renderer.render(this.scene, this.camera)
             //this.cube.rotation.y += this.speed
             //this.controls.update()
