@@ -2,7 +2,7 @@
     <div class="text-center">
         <v-dialog v-model="dialog" width="500" transition="dialog-bottom-transition">
             <template v-slot:activator="{ on, attrs }">
-                <v-btn color="red lighten-2" dark v-bind="attrs" v-on="on">
+                <v-btn style="width: 100% !important;" color="beige lighten-2" dark v-bind="attrs" v-on="on">
                     <v-icon>{{ 'mdi-plus-thick' }}</v-icon> Add Node
                 </v-btn>
             </template>
@@ -11,6 +11,7 @@
                 <v-card-title class="text-h5 grey lighten-2">
                     Add a New Node
                 </v-card-title>
+                <v-divider></v-divider>
                 <br>
 
                 <v-file-input style="width:80%; margin-left: 10%;" accept=".py" label="Input ROS python File"

@@ -36,7 +36,6 @@
                     </v-list-item-title>
                 </v-list-item>
             </v-list>
-
         </v-menu>
     </div>
 </template>
@@ -137,7 +136,7 @@ export default {
 }
 
 .hoverable {
-    max-width: fit-content;
+    width: 100% !important;
 }
 
 .hoverable:hover {
