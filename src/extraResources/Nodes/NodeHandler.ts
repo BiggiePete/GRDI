@@ -4,11 +4,30 @@ export const customNodesDir = "./resources/Nodes/CustomNodes.json"
 export function ReadCustomNodes() {
     const fs = require('fs');
     const data = JSON.parse(fs.readFileSync(customNodesDir))
-    CreateNodeTree(data);
+    //CreateNodeTree(data);
     return data
 
     //this needs to construct an object that contains every node and it's children, a node with no children is a node, and a node with children is a folder
 }
+
+export function getGroups() {
+    const fs = require('fs');
+    var groups = new Array()
+    const data = JSON.parse(fs.readFileSync(customNodesDir))
+
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].group.charAt(data[i].group.length - 1) != "/") {
+            data[i].group += "/"
+        }
+        groups.push({ text: data[i].group })
+    }
+    return groups = groups.filter((value, index, self) =>
+        index === self.findIndex((t) => (
+            t.text === value.text
+        ))
+    )
+}
+
 
 function CreateNodeTree(CustomNodes) {
     var folders = new Array();
@@ -16,10 +35,10 @@ function CreateNodeTree(CustomNodes) {
         folders.push(cN.group)
     });
 
-
     folders.forEach(folder => {
 
     });
+    console.log(folders)
 }
 
 const Example = [{
@@ -33,7 +52,7 @@ const Example = [{
 }]
 
 
-export function AddCustomNodes(url: string, group: string) {
+export function AddCustomNodes(url: string) {
     const fs = require('fs')
 
     //check to make sure there are no duplucates
@@ -65,7 +84,6 @@ export function AddCustomNodes(url: string, group: string) {
     //create the node datatype : 
     var nodeParams = {
         name: "",
-        group: group,
         inputs: new Array(),
         outputs: new Array(),
         CompressedPython: Compress(file)

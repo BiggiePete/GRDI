@@ -35,7 +35,7 @@ export default {
                 theme: {
                     foreground: "yellow", // font
                     background: "#060101", // Background color
-                    cursor: "help" // Set the cursor
+                    cursor: "#f2f2f2" // Set the cursor
                 }
             });
             this.term.loadAddon(fitAddon)
@@ -45,7 +45,7 @@ export default {
             this.term.writeln("Welcome to GRDI!")
             this.term.writeln("This will soon be a custom terminal! giving you feedback on what is going on inside of GRDI, it is currently under HEAVY development!")
             this.term.writeln("")
-            this.term.writeln("Add a Python file that contains ROS code on the right pane, and then click refresh database on the left to check for new nodes!")
+            this.term.writeln("Use the AddNode button on the left to add a new Node!")
 
             this.term.onData((key) => {
                 this.term.write(key)

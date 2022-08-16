@@ -6,8 +6,13 @@
         <v-btn dark dense @click="refresh" style="cursor:pointer;" class="hoverable">
             <v-icon> {{ 'mdi-refresh' }}</v-icon> Refresh Database
         </v-btn>
-        <hr />
-        <v-treeview v-model="tree" :items="items" class="treeview" itemKey="name" open-on-click dark dense>
+        <hr>
+        <br>
+        <v-text-field v-model="search" label="Search" dark dense clearable clear-icon="mdi-close-circle-outline">
+            <v-checkbox v-model="caseSensitive" dense dark hide-details label="Case sensitive search"></v-checkbox>
+        </v-text-field>
+        <v-treeview v-model="tree" :items="items" :search="search" :filter="filter" :open.sync="open" class="treeview"
+            itemKey="name" open-on-click dark dense>
 
             <template v-slot:prepend="{ item, open }">
                 <v-icon v-if="item.children">
@@ -33,13 +38,15 @@ export default {
     data() {
         return {
             tree: [],
-            items: []
+            items: [],
+            search: null,
+            caseSensitive: false,
         };
     },
     created() {
         this.refresh();
         eventBus.$on("NewNodeCreated", (e) => {
-            this.refresh();
+            this.refresh()
         });
     },
     methods: {
@@ -55,6 +62,14 @@ export default {
             customNodes.forEach((cn) => {
                 this.items.push(cn);
             });
+            eventBus.$emit("Refresh", "")
+        }
+    },
+    computed: {
+        filter() {
+            return this.caseSensitive
+                ? (item, search, textKey) => item[textKey].includes(search)
+                : undefined;
         }
     },
     components: { CustomNodeInputDialog }
