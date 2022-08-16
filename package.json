@@ -1,6 +1,6 @@
 {
     "name": "grdi",
-    "version": "1.2.15",
+    "version": "1.2.20",
     "description": "An electron-nuxt project",
     "main": "./dist/main/index.js",
     "scripts": {

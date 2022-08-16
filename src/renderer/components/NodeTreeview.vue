@@ -23,9 +23,21 @@
                 </v-icon>
             </template>
             <template v-slot:label="{ item }">
-                <a class="nodename" v-on:click="nodeSelected(item)"> &ThickSpace;{{ item.name }}</a>
+                <v-btn text dense dark class="nodename" v-on:click="nodeSelected(item)" @contextmenu="show">
+                    &ThickSpace;{{ item.name }}
+                </v-btn>
             </template>
         </v-treeview>
+        <v-menu class="top" v-model="showMenu" :position-x="x" :position-y="y" absolute offset-y dense dark>
+            <v-list>
+                <v-list-item v-for="menuItem in menuItems" :key="menuItem" @click="menuItemSelected(menuItem)">
+                    <v-list-item-title>
+                        {{ menuItem }}
+                    </v-list-item-title>
+                </v-list-item>
+            </v-list>
+
+        </v-menu>
     </div>
 </template>
 
@@ -41,6 +53,10 @@ export default {
             items: [],
             search: null,
             caseSensitive: false,
+            showMenu: false,
+            x: 0,
+            y: 0,
+            menuItems: ["Remove", "Rename"]
         };
     },
     created() {
@@ -63,20 +79,45 @@ export default {
                 this.items.push(cn);
             });
             eventBus.$emit("Refresh", "")
-        }
-    },
-    computed: {
-        filter() {
-            return this.caseSensitive
-                ? (item, search, textKey) => item[textKey].includes(search)
-                : undefined;
-        }
+        },
+        menuItemSelected(e) {
+            switch (e) {
+                case "Remove":
+                    alert("Not Implemented Yet!")
+                    break;
+                case "Rename":
+                    alert("Not Implemented Yet!")
+                    break
+                default:
+                    break;
+            }
+        },
+        show(e) {
+            e.preventDefault();
+            this.showMenu = false;
+            this.x = e.clientX;
+            this.y = e.clientY;
+            this.$nextTick(() => {
+                this.showMenu = true;
+            });
+        },
+        computed: {
+            filter() {
+                return this.caseSensitive
+                    ? (item, search, textKey) => item[textKey].includes(search)
+                    : undefined;
+            }
+        },
     },
     components: { CustomNodeInputDialog }
 }
 </script>
 
 <style>
+.top {
+    z-index: 100 !important;
+}
+
 .searchpane {
     background: #333;
     font-size: 14px !important;
