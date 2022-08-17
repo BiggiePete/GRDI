@@ -27,7 +27,26 @@ export function getGroups() {
         ))
     )
 }
+export function RemoveNode(nodeName: string): boolean {
+    const fs = require('fs');
+    const data: {
+        name: "",
+        inputs: [],
+        outputs: [],
+        CompressedPython: string
+    }[] = JSON.parse(fs.readFileSync(customNodesDir))
+    console.log(data)
+    console.log(nodeName)
 
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].name == nodeName) {
+            data.splice(i, 1)
+            fs.writeFile(customNodesDir, JSON.stringify(data), (err) => { console.warn(err); console.log("file written") })
+            return true;
+        }
+    }
+    return false
+}
 
 function CreateNodeTree(CustomNodes) {
     var folders = new Array();
@@ -63,13 +82,13 @@ export function AddCustomNodes(url: string) {
     } else {
         var fileName = url.slice(url.lastIndexOf("/") + 1, url.lastIndexOf("."))
     }
-
-    CustomNodes.forEach(cn => {
+    for (let cn of CustomNodes) {
         if (fileName == cn.name) {
             console.warn("A node with this Name already exists!")
+            alert("This Node Already Exists!")
             return;
         }
-    });
+    }
 
     //if none, populate all of the information pertaining to the node
     const file: string = fs.readFileSync(url, { encoding: 'utf8', flag: 'r' })

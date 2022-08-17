@@ -19,7 +19,8 @@ Debugger : seperate "Tab" that contains all of the information, this could also 
 
 
 current goal for whenever :
-use snappy to re-construct python files on click (this will be usefull later)
-allow users to create custom message types, and those message types need to have their own colors (user selectable)
-settings, allow users to change the color palette for the node connections
-treeview needs folders allow users to add nodes to certain folders
+- use snappy to re-construct python files on click (this will be usefull later)
+- allow users to create custom message types, and those message types need to have their own colors (user selectable)
+- settings, allow users to change the color palette for the node connections
+- multiple file input
+- node tree-view context menu

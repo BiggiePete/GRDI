@@ -37,7 +37,6 @@
 <script>
 import { AddCustomNodes } from "../../extraResources/Nodes/NodeHandler.ts";
 import { eventBus } from "~/plugins/eventBus";
-import { getGroups } from "../../extraResources/Nodes/NodeHandler.ts"
 export default {
     data() {
         return {

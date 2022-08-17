@@ -23,7 +23,8 @@
                 </v-icon>
             </template>
             <template v-slot:label="{ item }">
-                <v-btn text dense dark class="nodename" v-on:click="nodeSelected(item)" @contextmenu="show">
+                <v-btn text dense dark class="nodename" v-on:click="nodeSelected(item)"
+                    @contextmenu="show($event, item.name)">
                     &ThickSpace;{{ item.name }}
                 </v-btn>
             </template>
@@ -42,7 +43,7 @@
 
 <script>
 import { eventBus } from '@/plugins/eventBus'
-import { ReadCustomNodes } from '../../extraResources/Nodes/NodeHandler'
+import { ReadCustomNodes, RemoveNode } from '../../extraResources/Nodes/NodeHandler'
 import CustomNodeInputDialog from './CustomNodeInputDialog.vue'
 
 export default {
@@ -52,6 +53,7 @@ export default {
             items: [],
             search: null,
             caseSensitive: false,
+            selectedNode: null,
             showMenu: false,
             x: 0,
             y: 0,
@@ -82,7 +84,9 @@ export default {
         menuItemSelected(e) {
             switch (e) {
                 case "Remove":
-                    alert("Not Implemented Yet!")
+                    console.log(this.selectedNode)
+                    console.log(RemoveNode(this.selectedNode))
+                    this.refresh()
                     break;
                 case "Rename":
                     alert("Not Implemented Yet!")
@@ -91,7 +95,9 @@ export default {
                     break;
             }
         },
-        show(e) {
+        show(e, nodeName) {
+            this.selectedNode = nodeName;
+            console.log(e)
             e.preventDefault();
             this.showMenu = false;
             this.x = e.clientX;
