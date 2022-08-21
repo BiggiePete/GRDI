@@ -1,4 +1,4 @@
-
+import { eventBus } from '../../renderer/plugins/eventBus'
 import snappy from "snappy"
 export const customNodesDir = "./resources/Nodes/CustomNodes.json"
 export function ReadCustomNodes() {

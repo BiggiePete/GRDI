@@ -45,6 +45,7 @@
 import { eventBus } from '@/plugins/eventBus'
 import { ReadCustomNodes, RemoveNode } from '../../extraResources/Nodes/NodeHandler'
 import CustomNodeInputDialog from './CustomNodeInputDialog.vue'
+import { delay } from '~/static/Scripts/delay'
 
 export default {
     data() {
@@ -63,7 +64,7 @@ export default {
     created() {
         this.refresh();
         eventBus.$on("NewNodeCreated", (e) => {
-            this.refresh()
+            delay(1000).then(() => { this.refresh() })
         });
     },
     methods: {
